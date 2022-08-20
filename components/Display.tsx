@@ -1,19 +1,22 @@
 import { View } from "react-native";
+import rootStyles from "../styles/rootStyles";
+import MiddleAccount from "./account/MiddleAccount";
 import TopAccount from "./account/TopAccount";
 import Chart from "./chart/Chart";
 import PositionInfo from "./position-info/PositionInfo";
-import Shop from "./shop/Shop";
-import Trade from "./trade/Trade";
+import ControlPanel from "./control-panel/ControlPanel";
+import NextTurnButton from "./next-turn-button/NextTurnButton";
 
 function Display() {
   return (
     <>
-      <View>
-        <Chart />
+      <View style={rootStyles.display}>
         <TopAccount />
-        <Trade />
+        <Chart />
+        <MiddleAccount />
         <PositionInfo />
-        <Shop />
+        <ControlPanel />
+        <NextTurnButton />
       </View>
     </>
   );

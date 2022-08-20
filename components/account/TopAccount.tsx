@@ -1,7 +1,12 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
+import rootStyles from "../../styles/rootStyles";
 
 function TopAccount() {
-  return <Text>TopAccount</Text>;
+  return (
+    <View style={rootStyles.topAccount}>
+      <Text>TopAccount</Text>
+    </View>
+  );
 }
 
 export default TopAccount;

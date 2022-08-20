@@ -1,7 +1,12 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
+import rootStyles from "../../styles/rootStyles";
 
 function Chart() {
-  return <Text>Chart</Text>;
+  return (
+    <View style={rootStyles.chart}>
+      <Text>Chart</Text>
+    </View>
+  );
 }
 
 export default Chart;
