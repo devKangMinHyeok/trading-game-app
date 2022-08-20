@@ -1,0 +1,11 @@
+export const INITIAL_TIME = 1660647240;
+export const SPLIT_UNIT_OF_CANDLE = 40;
+export const CHART_TIME_UNIT_SECOND = 60;
+export const TRANSACTION_FEE_RATE = 0.04;
+export const INIT_LEVERAGE = 1;
+export const LEVERAGE_MIN = 1;
+export const LEVERAGE_MAX = 50;
+export const LEVERAGE_UNITS = [1, 2, 3, 5, 10, 25, 50];
+export const INITIAL_CANDLE_CLOSE = 150;
+export const INITIAL_CANDLE_HIGH = 200;
+export const INITIAL_CANDLE_LOW = 50;
