@@ -1,11 +1,6 @@
 import { cloneDeep } from "lodash";
-import { useEffect, useState } from "react";
-import {
-  GestureResponderEvent,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { useEffect } from "react";
+import { ScrollView } from "react-native";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { VictoryAxis, VictoryCandlestick, VictoryChart } from "victory-native";
 import {
@@ -16,7 +11,6 @@ import {
 import candleGenerator from "../../functions/candleGenerator";
 import {
   CANDLE_MOVING_UNIT_MS,
-  INITIAL_CANDLE_SET,
   SPLIT_UNIT_OF_CANDLE,
 } from "../../globalConstant";
 import { ICandleStick } from "../../interfaces/interface";
