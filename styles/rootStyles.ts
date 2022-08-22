@@ -9,18 +9,18 @@ const rootStyles = StyleSheet.create({
   },
 
   topAccount: {
-    flex: 0.5,
+    flex: 0.4,
     justifyContent: "flex-end",
     backgroundColor: "#dbffe3",
   },
 
   chart: {
-    flex: 2,
+    flex: 1.3,
     justifyContent: "center",
   },
 
   middleAccount: {
-    flex: 0.5,
+    flex: 0.3,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
@@ -39,7 +39,6 @@ const rootStyles = StyleSheet.create({
 
   trade: {
     width: SCREEN_WIDTH * 0.95,
-    justifyContent: "center",
     backgroundColor: "grey",
   },
 
@@ -50,7 +49,7 @@ const rootStyles = StyleSheet.create({
   },
 
   rootControlButton: {
-    flex: 1,
+    flex: 0.5,
     backgroundColor: "blue",
     justifyContent: "center",
     alignContent: "center",
