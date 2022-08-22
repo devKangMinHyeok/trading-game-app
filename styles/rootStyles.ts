@@ -15,9 +15,8 @@ const rootStyles = StyleSheet.create({
   },
 
   chart: {
-    flex: 1,
+    flex: 3,
     justifyContent: "center",
-    backgroundColor: "#afffc1",
   },
 
   middleAccount: {
@@ -48,8 +47,8 @@ const rootStyles = StyleSheet.create({
     backgroundColor: "purple",
   },
 
-  nextTurnButton: {
-    flex: 0.5,
+  rootControlButton: {
+    flex: 1,
     backgroundColor: "blue",
     justifyContent: "center",
     alignContent: "center",

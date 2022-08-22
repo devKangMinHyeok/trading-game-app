@@ -1,12 +1,9 @@
-import { CandlestickData } from "lightweight-charts";
-
-export interface IChartComponent {
-  processedData?: CandlestickData[];
-  updatedCandle?: CandlestickData[];
-  longLiquidPrice?: number;
-  longPositionOpenPrice?: number;
-  shortLiquidPrice?: number;
-  shortPositionOpenPrice?: number;
+export interface ICandleStick {
+  x: Date;
+  open: number;
+  close: number;
+  high: number;
+  low: number;
 }
 
 export interface IFutureAccount {

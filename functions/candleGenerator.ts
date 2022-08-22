@@ -1,26 +1,26 @@
-import { CandlestickData, Time } from "lightweight-charts";
 import { cloneDeep, random } from "lodash";
+import { ICandleStick } from "../interfaces/interface";
 
 const candleGenerator = (
-  time: Time,
+  time: Date,
   lastClosePrice: number,
-  numberInUnit: number
+  numberPerUnit: number,
+  random_gap: number = 0.05
 ) => {
-  let previousCandle: CandlestickData = {
-    time,
+  let previousCandle: ICandleStick = {
+    x: time,
     open: lastClosePrice,
     high: lastClosePrice,
     low: lastClosePrice,
     close: lastClosePrice,
   };
   const candleSet = [previousCandle];
-  const RANDOM_GAP = 0.05;
 
-  for (let i = 0; i < numberInUnit; i++) {
+  for (let i = 0; i < numberPerUnit; i++) {
     const newCandle = cloneDeep(previousCandle);
 
     const newClose =
-      newCandle.close * random(1 - RANDOM_GAP, 1 + RANDOM_GAP, true);
+      newCandle.close * random(1 - random_gap, 1 + random_gap, true);
     const newHigh = newCandle.high < newClose ? newClose : newCandle.high;
     const newLow = newCandle.low > newClose ? newClose : newCandle.low;
 

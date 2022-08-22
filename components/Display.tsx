@@ -5,7 +5,7 @@ import TopAccount from "./account/TopAccount";
 import Chart from "./chart/Chart";
 import PositionInfo from "./position-info/PositionInfo";
 import ControlPanel from "./control-panel/ControlPanel";
-import NextTurnButton from "./next-turn-button/NextTurnButton";
+import RootControlButton from "./root-control-button/RootControlButton";
 
 function Display() {
   return (
@@ -16,7 +16,7 @@ function Display() {
         <MiddleAccount />
         <PositionInfo />
         <ControlPanel />
-        <NextTurnButton />
+        <RootControlButton />
       </View>
     </>
   );

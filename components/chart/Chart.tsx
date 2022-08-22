@@ -1,10 +1,12 @@
 import { Text, View } from "react-native";
+
 import rootStyles from "../../styles/rootStyles";
+import CandleChart from "./CandleChart";
 
 function Chart() {
   return (
     <View style={rootStyles.chart}>
-      <Text>Chart</Text>
+      <CandleChart />
     </View>
   );
 }

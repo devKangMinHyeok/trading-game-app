@@ -3,8 +3,7 @@ import { atom, selector } from "recoil";
 import {
   INITIAL_CANDLE_CLOSE,
   INITIAL_CANDLE_HIGH,
-  INITIAL_CANDLE_LOW,
-  INITIAL_TIME,
+  INITIAL_CANDLE_SET,
 } from "./globalConstant";
 import {
   IFutureAccount,
@@ -12,6 +11,11 @@ import {
   ITotalAccount,
   ITotalFutureAccount,
 } from "./interfaces/interface";
+
+export const candleDataState = atom({
+  key: "candleDataState",
+  default: INITIAL_CANDLE_SET,
+});
 
 export const turnNumberState = atom({
   key: "turnNumberState",
@@ -26,19 +30,6 @@ export const isLongControllerActiveState = atom({
 export const isCandleMovingState = atom({
   key: "isCandleMovingState",
   default: false,
-});
-
-export const initialCandleState = atom({
-  key: "initialCandleState",
-  default: [
-    {
-      time: INITIAL_TIME as UTCTimestamp,
-      open: 100,
-      high: INITIAL_CANDLE_HIGH,
-      low: INITIAL_CANDLE_LOW,
-      close: INITIAL_CANDLE_CLOSE,
-    },
-  ] as CandlestickData[],
 });
 
 export const lastClosePriceState = atom({
