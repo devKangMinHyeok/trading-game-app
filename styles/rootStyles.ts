@@ -9,19 +9,21 @@ const rootStyles = StyleSheet.create({
   },
 
   topAccount: {
-    flex: 1,
-    justifyContent: "center",
+    flex: 0.5,
+    justifyContent: "flex-end",
     backgroundColor: "#dbffe3",
   },
 
   chart: {
-    flex: 3,
+    flex: 2,
     justifyContent: "center",
   },
 
   middleAccount: {
-    flex: 1,
-    justifyContent: "center",
+    flex: 0.5,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
     backgroundColor: "orange",
   },
 

@@ -1,6 +1,6 @@
 import { cloneDeep } from "lodash";
 import { useEffect } from "react";
-import { ScrollView } from "react-native";
+import { View } from "react-native";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { VictoryAxis, VictoryCandlestick, VictoryChart } from "victory-native";
 import {
@@ -68,7 +68,7 @@ function CandleChart() {
   }, [turnNumber]);
 
   return (
-    <ScrollView>
+    <View>
       <VictoryChart domainPadding={{ x: 70 }}>
         <VictoryAxis dependentAxis />
         <VictoryCandlestick
@@ -76,7 +76,7 @@ function CandleChart() {
           data={candleData}
         />
       </VictoryChart>
-    </ScrollView>
+    </View>
   );
 }
 
