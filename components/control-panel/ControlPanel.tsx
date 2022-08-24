@@ -1,5 +1,4 @@
-import { ScrollView, Text, View } from "react-native";
-import { useRecoilValue } from "recoil";
+import { ScrollView, View } from "react-native";
 
 import rootStyles from "../../styles/rootStyles";
 import Shop from "./shop/Shop";

@@ -1,8 +1,8 @@
 import { ICandleStick } from "./interfaces/interface";
 
 // Chart
-export const SPLIT_UNIT_OF_CANDLE = 40;
-export const CANDLE_MOVING_UNIT_MS = 150;
+export const SPLIT_UNIT_OF_CANDLE = 20;
+export const CANDLE_MOVING_UNIT_MS = 200;
 export const INITIAL_CANDLE_OPEN = 100;
 export const INITIAL_CANDLE_CLOSE = 110;
 export const INITIAL_CANDLE_HIGH = 120;

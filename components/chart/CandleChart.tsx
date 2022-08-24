@@ -65,10 +65,9 @@ function CandleChart() {
   ) => {
     return setTimeout(() => {
       setCandleData((prev) => {
-        const newData = cloneDeep(prev);
+        const newData = [...prev];
         if (newData.slice(-1)[0].x.toString() == newCandle.x.toString()) {
-          newData.pop();
-          newData.push(newCandle);
+          newData[newData.length - 1] = newCandle;
         } else {
           newData.push(newCandle);
         }

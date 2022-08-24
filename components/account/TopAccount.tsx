@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Text, View } from "react-native";
 import { useRecoilValue } from "recoil";
 import { totalAccountState } from "../../atom";
@@ -23,4 +24,4 @@ function TopAccount() {
   );
 }
 
-export default TopAccount;
+export default memo(TopAccount);

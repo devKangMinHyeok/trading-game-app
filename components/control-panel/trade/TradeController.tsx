@@ -1,7 +1,7 @@
 import Slider from "@react-native-community/slider";
 import { cloneDeep } from "lodash";
-import { useEffect, useRef, useState } from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { memo, useCallback, useEffect, useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   cashAccountState,
@@ -17,8 +17,12 @@ import {
 } from "../../../atom";
 import convertKrNumberType from "../../../functions/convertKrNumberType";
 import { LEVERAGE_UNITS, TRANSACTION_FEE_RATE } from "../../../globalConstant";
-import CustomToggleSwitch from "../../assets/CustomSwitch";
-import Switch from "../../assets/Switch";
+
+import AmountSettingBox from "./AmountSettingBox";
+import LeverageControlBox from "./LeverageControlBox";
+import LiquidPriceBox from "./LiquidPriceBox";
+import TotalPriceBox from "./TotalPriceBox";
+import TradeButton from "./TradeButton";
 
 function TradeController({
   disabled,
@@ -45,11 +49,7 @@ function TradeController({
   const [totalPrice, setTotalPrice] = useState(0);
   const [coinAmount, setCoinAmount] = useState(0);
 
-  const amountRateHandler = (value: number) => {
-    setAmountRate(value);
-  };
-
-  const buyButtonHandler = () => {
+  const buyButtonHandler = useCallback(() => {
     if (isLongSelected) {
       if (!isCandleMoving) {
         setCashAccount((prev) => prev - totalPrice);
@@ -90,9 +90,15 @@ function TradeController({
         setAmountRate(0);
       }
     }
-  };
+  }, [
+    isLongSelected,
+    isCandleMoving,
+    longAccountDetail,
+    totalPrice,
+    coinAmount,
+  ]);
 
-  const sellButtonHandler = () => {
+  const sellButtonHandler = useCallback(() => {
     if (!isLongSelected) {
       if (!isCandleMoving) {
         setCashAccount((prev) => prev - totalPrice);
@@ -133,7 +139,13 @@ function TradeController({
         setAmountRate(0);
       }
     }
-  };
+  }, [
+    isLongSelected,
+    isCandleMoving,
+    shortAccountDetail,
+    totalPrice,
+    coinAmount,
+  ]);
 
   useEffect(() => {
     const targetCash = (cashAccount * amountRate) / 100;
@@ -165,74 +177,48 @@ function TradeController({
     }
   }, [lastClosePrice, leverage, isCandleMoving, isLongSelected]);
 
+  useEffect(() => {
+    if (isCandleMoving) {
+      setAmountRate(0);
+    }
+  }, [isCandleMoving]);
+
   return (
     <View>
+      <LeverageControlBox
+        activeLeverage={activeLeverage}
+        leverage={leverage}
+        setLeverage={setLeverage}
+        disabled={disabled}
+      />
+      <AmountSettingBox amountRate={amountRate} setAmountRate={setAmountRate} />
       <View>
-        <Text>레버리지</Text>
-        <CustomToggleSwitch
-          options={LEVERAGE_UNITS}
-          value={activeLeverage ? activeLeverage : leverage}
-          setValueFunction={setLeverage}
-          disabled={disabled}
+        <TotalPriceBox totalPrice={totalPrice} coinAmount={coinAmount} />
+        <LiquidPriceBox
+          isLongSelected={isLongSelected}
+          longLiquid={longLiquid}
+          shortLiquid={shortLiquid}
         />
-      </View>
-      <View>
-        <Text>보유 현금 대비 </Text>
-        <Text>{amountRate}%</Text>
-        <Slider
-          minimumValue={0}
-          maximumValue={100}
-          step={5}
-          minimumTrackTintColor="#FFFFFF"
-          maximumTrackTintColor="#000000"
-          value={amountRate}
-          onValueChange={amountRateHandler}
-          tapToSeek={true}
-        />
-      </View>
-      <View>
-        <Text>
-          주문총액 : {convertKrNumberType(Math.ceil(totalPrice))}원 | 개수 :{" "}
-          {coinAmount}
-        </Text>
-        <Text>
-          청산가 :{" "}
-          {isLongSelected
-            ? convertKrNumberType(Math.ceil(longLiquid))
-            : convertKrNumberType(Math.ceil(shortLiquid))}
-        </Text>
       </View>
       {isLongSelected ? (
         <View>
-          <TouchableOpacity
-            style={{
-              backgroundColor: "green",
-              height: "100%",
-              opacity: isCandleMoving ? 0.5 : 1,
-            }}
-            onPress={buyButtonHandler}
-            disabled={isCandleMoving}
-          >
-            <Text>BUY</Text>
-          </TouchableOpacity>
+          <TradeButton
+            isCandleMoving={isCandleMoving}
+            buttonHandler={buyButtonHandler}
+            isBuy={true}
+          />
         </View>
       ) : (
         <View>
-          <TouchableOpacity
-            style={{
-              backgroundColor: "orange",
-              height: "100%",
-              opacity: isCandleMoving ? 0.5 : 1,
-            }}
-            onPress={sellButtonHandler}
-            disabled={isCandleMoving}
-          >
-            <Text>SELL</Text>
-          </TouchableOpacity>
+          <TradeButton
+            isCandleMoving={isCandleMoving}
+            buttonHandler={sellButtonHandler}
+            isBuy={false}
+          />
         </View>
       )}
     </View>
   );
 }
 
-export default TradeController;
+export default memo(TradeController);

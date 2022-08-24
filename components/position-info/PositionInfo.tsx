@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import {
@@ -62,4 +63,4 @@ function PositionInfo() {
   );
 }
 
-export default PositionInfo;
+export default memo(PositionInfo);

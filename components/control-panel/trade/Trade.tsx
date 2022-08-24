@@ -4,7 +4,6 @@ import { useRecoilState } from "recoil";
 import { isLongControllerActiveState } from "../../../atom";
 import rootStyles from "../../../styles/rootStyles";
 import CustomToggleSwitch from "../../assets/CustomSwitch";
-import Switch from "../../assets/Switch";
 import LongTradeController from "./long-trade-controller/LongTradeController";
 import ShortTradeController from "./short-trade-controller/ShortTradeController";
 
@@ -12,7 +11,6 @@ function Trade() {
   const [isLongSelected, setIsLongSelected] = useRecoilState(
     isLongControllerActiveState
   );
-
   return (
     <View style={rootStyles.trade}>
       <CustomToggleSwitch

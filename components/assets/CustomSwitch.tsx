@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   GestureResponderEvent,
   StyleSheet,
@@ -44,7 +45,6 @@ function CustomToggleSwitch({
   ) => {
     setValueFunction(newValue);
   };
-
   return (
     <View style={switchStyle(disabled).container}>
       {options.map((ele, index) => (
@@ -61,4 +61,4 @@ function CustomToggleSwitch({
   );
 }
 
-export default CustomToggleSwitch;
+export default memo(CustomToggleSwitch);
