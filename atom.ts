@@ -4,6 +4,9 @@ import {
   INITIAL_CANDLE_CLOSE,
   INITIAL_CANDLE_HIGH,
   INITIAL_CANDLE_SET,
+  LAST_OF_INITIAL_CANDLE_CLOSE,
+  LAST_OF_INITIAL_CANDLE_HIGH,
+  LAST_OF_INITIAL_CANDLE_LOW,
 } from "./globalConstant";
 import {
   IFutureAccount,
@@ -12,6 +15,9 @@ import {
   ITotalFutureAccount,
 } from "./interfaces/interface";
 
+// UI 시스템
+
+// 게임 시스템
 export const candleDataState = atom({
   key: "candleDataState",
   default: INITIAL_CANDLE_SET,
@@ -34,17 +40,17 @@ export const isCandleMovingState = atom({
 
 export const lastClosePriceState = atom({
   key: "lastClosePriceState",
-  default: INITIAL_CANDLE_CLOSE,
+  default: LAST_OF_INITIAL_CANDLE_CLOSE,
 });
 
 export const lastHighPriceState = atom({
   key: "lastHighPriceState",
-  default: INITIAL_CANDLE_HIGH,
+  default: LAST_OF_INITIAL_CANDLE_HIGH,
 });
 
 export const lastLowPriceState = atom({
   key: "lastLowPriceState",
-  default: INITIAL_CANDLE_HIGH,
+  default: LAST_OF_INITIAL_CANDLE_LOW,
 });
 
 export const longLiquidState = atom({

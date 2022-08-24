@@ -28,12 +28,14 @@ const rootStyles = StyleSheet.create({
   },
 
   positionInfo: {
-    flex: 1,
-    justifyContent: "center",
+    flex: 0.8,
+    flexDirection: "row",
+    justifyContent: "space-around",
     backgroundColor: "green",
   },
 
   controlPanel: {
+    flex: 1.7,
     backgroundColor: "pink",
   },
 
@@ -51,8 +53,7 @@ const rootStyles = StyleSheet.create({
   rootControlButton: {
     flex: 0.5,
     backgroundColor: "blue",
-    justifyContent: "center",
-    alignContent: "center",
+    flexDirection: "row",
   },
 });
 

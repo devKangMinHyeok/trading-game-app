@@ -12,7 +12,7 @@ function TopAccount() {
     <View style={rootStyles.topAccount}>
       <Text style={{ fontSize: 16 }}>
         평가자산:
-        {convertKrNumberType(totalAccount.totalAsset)}원{" "}
+        {convertKrNumberType(Math.ceil(totalAccount.totalAsset))}원{" "}
         {(
           ((totalAccount.totalAsset - INITIAL_CASH) / INITIAL_CASH) *
           100
