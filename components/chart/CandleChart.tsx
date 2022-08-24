@@ -1,11 +1,16 @@
 import { cloneDeep } from "lodash";
 import { useEffect } from "react";
 import { View } from "react-native";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import { VictoryAxis, VictoryCandlestick, VictoryChart } from "victory-native";
 import {
   candleDataState,
   isCandleMovingState,
+  lastClosePriceState,
+  longAccountDetailState,
+  longAccountState,
+  shortAccountDetailState,
+  shortAccountState,
   turnNumberState,
 } from "../../atom";
 import candleGenerator from "../../functions/candleGenerator";
@@ -20,6 +25,14 @@ function CandleChart() {
   const [candleData, setCandleData] = useRecoilState(candleDataState);
   const [isCandleMoving, setIsCandleMoving] =
     useRecoilState(isCandleMovingState);
+  const [lastClosePrice, setLastClosePrice] =
+    useRecoilState(lastClosePriceState);
+  const [longAccount, setLongAccount] = useRecoilState(longAccountState);
+  const [shortAccount, setShortAccount] = useRecoilState(shortAccountState);
+  const longAccountDetail = useRecoilValue(longAccountDetailState);
+  const shortAccountDetail = useRecoilValue(shortAccountDetailState);
+  const resetLongAccount = useResetRecoilState(longAccountState);
+  const resetShortAccount = useResetRecoilState(shortAccountState);
 
   const updateCandleData = (
     newCandle: ICandleStick,
@@ -37,6 +50,32 @@ function CandleChart() {
         }
         return newData;
       });
+
+      setLastClosePrice(newCandle.close);
+
+      if (longAccountDetail.positionActive) {
+        setLongAccount((prev) => {
+          const newLog = cloneDeep(prev);
+          newLog.currentPositionValue =
+            newCandle.close * newLog.openPositionAmount;
+          return newLog;
+        });
+        if (longAccountDetail.liquidPrice >= newCandle.low) {
+          resetLongAccount();
+        }
+      }
+
+      if (shortAccountDetail.positionActive) {
+        setShortAccount((prev) => {
+          const newLog = cloneDeep(prev);
+          newLog.currentPositionValue =
+            newCandle.close * newLog.openPositionAmount;
+          return newLog;
+        });
+        if (shortAccountDetail.liquidPrice <= newCandle.high) {
+          resetShortAccount();
+        }
+      }
 
       if (index === lastIndex) {
         setIsCandleMoving(false);
