@@ -1,12 +1,8 @@
 import { ICandleStick } from "./interfaces/interface";
 
-export const INITIAL_CASH = 1000000;
+// Chart
 export const SPLIT_UNIT_OF_CANDLE = 40;
-export const CANDLE_MOVING_UNIT_MS = 200;
-export const TRANSACTION_FEE_RATE = 0.04;
-export const INIT_LEVERAGE = 1;
-export const LEVERAGE_MIN = 1;
-export const LEVERAGE_MAX = 50;
+export const CANDLE_MOVING_UNIT_MS = 150;
 export const INITIAL_CANDLE_OPEN = 100;
 export const INITIAL_CANDLE_CLOSE = 110;
 export const INITIAL_CANDLE_HIGH = 120;
@@ -15,6 +11,17 @@ export const LAST_OF_INITIAL_CANDLE_OPEN = 160;
 export const LAST_OF_INITIAL_CANDLE_CLOSE = 150;
 export const LAST_OF_INITIAL_CANDLE_HIGH = 170;
 export const LAST_OF_INITIAL_CANDLE_LOW = 140;
+export const CHART_X_DOMAIN_LENGTH = 15;
+export const CHART_Y_DOMAIN_PADDING = 15;
+
+// Account
+export const INITIAL_CASH = 1000000;
+export const TRANSACTION_FEE_RATE = 0.04;
+
+// Leverage
+export const INIT_LEVERAGE = 1;
+export const LEVERAGE_MIN = 1;
+export const LEVERAGE_MAX = 50;
 
 export const LEVERAGE_UNITS = [
   { label: "x1", value: 1 },
@@ -41,8 +48,19 @@ export const INITIAL_CANDLE_SET: ICandleStick[] = [
   { x: new Date(2022, 0, 7), open: 130, close: 180, high: 200, low: 100 },
   { x: new Date(2022, 0, 8), open: 180, close: 200, high: 200, low: 160 },
   { x: new Date(2022, 0, 9), open: 200, close: 160, high: 210, low: 150 },
+  { x: new Date(2022, 0, 10), open: 160, close: 150, high: 200, low: 150 },
+  { x: new Date(2022, 0, 11), open: 150, close: 120, high: 160, low: 110 },
+  { x: new Date(2022, 0, 12), open: 120, close: 130, high: 140, low: 110 },
+  { x: new Date(2022, 0, 13), open: 130, close: 160, high: 180, low: 130 },
   {
-    x: new Date(2022, 0, 10),
+    x: new Date(2022, 0, 14),
+    open: 160,
+    close: LAST_OF_INITIAL_CANDLE_OPEN,
+    high: 200,
+    low: 150,
+  },
+  {
+    x: new Date(2022, 0, 15),
     open: LAST_OF_INITIAL_CANDLE_OPEN,
     close: LAST_OF_INITIAL_CANDLE_CLOSE,
     high: LAST_OF_INITIAL_CANDLE_HIGH,

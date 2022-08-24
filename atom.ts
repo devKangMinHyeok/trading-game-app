@@ -7,6 +7,7 @@ import {
   LAST_OF_INITIAL_CANDLE_CLOSE,
   LAST_OF_INITIAL_CANDLE_HIGH,
   LAST_OF_INITIAL_CANDLE_LOW,
+  LAST_OF_INITIAL_CANDLE_OPEN,
 } from "./globalConstant";
 import {
   IFutureAccount,
@@ -41,6 +42,11 @@ export const isCandleMovingState = atom({
 export const lastClosePriceState = atom({
   key: "lastClosePriceState",
   default: LAST_OF_INITIAL_CANDLE_CLOSE,
+});
+
+export const lastOpenPriceState = atom({
+  key: "lastOpenPriceState",
+  default: LAST_OF_INITIAL_CANDLE_OPEN,
 });
 
 export const lastHighPriceState = atom({
