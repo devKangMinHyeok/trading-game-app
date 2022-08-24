@@ -205,8 +205,13 @@ function TradeController({
       {isLongSelected ? (
         <View>
           <TouchableOpacity
-            style={{ backgroundColor: "green", height: "100%" }}
+            style={{
+              backgroundColor: "green",
+              height: "100%",
+              opacity: isCandleMoving ? 0.5 : 1,
+            }}
             onPress={buyButtonHandler}
+            disabled={isCandleMoving}
           >
             <Text>BUY</Text>
           </TouchableOpacity>
@@ -214,8 +219,13 @@ function TradeController({
       ) : (
         <View>
           <TouchableOpacity
-            style={{ backgroundColor: "orange", height: "100%" }}
+            style={{
+              backgroundColor: "orange",
+              height: "100%",
+              opacity: isCandleMoving ? 0.5 : 1,
+            }}
             onPress={sellButtonHandler}
+            disabled={isCandleMoving}
           >
             <Text>SELL</Text>
           </TouchableOpacity>

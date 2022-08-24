@@ -2,7 +2,7 @@ import { ICandleStick } from "./interfaces/interface";
 
 export const INITIAL_CASH = 1000000;
 export const SPLIT_UNIT_OF_CANDLE = 40;
-export const CANDLE_MOVING_UNIT_MS = 100;
+export const CANDLE_MOVING_UNIT_MS = 200;
 export const TRANSACTION_FEE_RATE = 0.04;
 export const INIT_LEVERAGE = 1;
 export const LEVERAGE_MIN = 1;
