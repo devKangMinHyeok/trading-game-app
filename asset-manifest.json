@@ -1,0 +1,22 @@
+{
+  "files": {
+    "app.js": "/trading-game-app/static/js/app.b05a2371.chunk.js",
+    "app.js.map": "/trading-game-app/static/js/app.b05a2371.chunk.js.map",
+    "runtime~app.js": "/trading-game-app/static/js/runtime~app.25d1b835.js",
+    "runtime~app.js.map": "/trading-game-app/static/js/runtime~app.25d1b835.js.map",
+    "static/js/2.35371b9a.chunk.js": "/trading-game-app/static/js/2.35371b9a.chunk.js",
+    "static/js/2.35371b9a.chunk.js.map": "/trading-game-app/static/js/2.35371b9a.chunk.js.map",
+    "favicon-16.png": "/trading-game-app/favicon-16.png",
+    "favicon-32.png": "/trading-game-app/favicon-32.png",
+    "favicon.ico": "/trading-game-app/favicon.ico",
+    "index.html": "/trading-game-app/index.html",
+    "manifest.json": "/trading-game-app/manifest.json",
+    "serve.json": "/trading-game-app/serve.json",
+    "static/js/2.35371b9a.chunk.js.LICENSE.txt": "/trading-game-app/static/js/2.35371b9a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime~app.25d1b835.js",
+    "static/js/2.35371b9a.chunk.js",
+    "static/js/app.b05a2371.chunk.js"
+  ]
+}
