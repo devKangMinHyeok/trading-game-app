@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 import { shortAccountDetailState } from "../../../../atom";
-import TradeController from "../TradeController";
+import TradeController from "./TradeController";
 
 function ShortTradeController() {
   const shortAccountDetail = useRecoilValue(shortAccountDetailState);

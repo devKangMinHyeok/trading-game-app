@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 import { longAccountDetailState } from "../../../../atom";
-import TradeController from "../TradeController";
+import TradeController from "./TradeController";
 
 function LongTradeController() {
   const longAccountDetail = useRecoilValue(longAccountDetailState);

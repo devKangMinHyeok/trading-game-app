@@ -1,7 +1,6 @@
-import Slider from "@react-native-community/slider";
 import { cloneDeep } from "lodash";
-import { memo, useCallback, useEffect, useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { useCallback, useEffect, useState } from "react";
+import { View } from "react-native";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   cashAccountState,
@@ -14,15 +13,14 @@ import {
   shortAccountDetailState,
   shortAccountState,
   shortLiquidState,
-} from "../../../atom";
-import convertKrNumberType from "../../../functions/convertKrNumberType";
-import { LEVERAGE_UNITS, TRANSACTION_FEE_RATE } from "../../../globalConstant";
+} from "../../../../atom";
+import { TRANSACTION_FEE_RATE } from "../../../../globalConstant";
+import AmountSettingBox from "./components/AmountSettingBox";
 
-import AmountSettingBox from "./AmountSettingBox";
-import LeverageControlBox from "./LeverageControlBox";
-import LiquidPriceBox from "./LiquidPriceBox";
-import TotalPriceBox from "./TotalPriceBox";
-import TradeButton from "./TradeButton";
+import LeverageControlBox from "./components/LeverageControlBox";
+import LiquidPriceBox from "./components/LiquidPriceBox";
+import TotalPriceBox from "./components/TotalPriceBox";
+import TradeButton from "./components/TradeButton";
 
 function TradeController({
   disabled,
@@ -192,33 +190,27 @@ function TradeController({
         disabled={disabled}
       />
       <AmountSettingBox amountRate={amountRate} setAmountRate={setAmountRate} />
-      <View>
-        <TotalPriceBox totalPrice={totalPrice} coinAmount={coinAmount} />
-        <LiquidPriceBox
-          isLongSelected={isLongSelected}
-          longLiquid={longLiquid}
-          shortLiquid={shortLiquid}
-        />
-      </View>
+      <TotalPriceBox totalPrice={totalPrice} coinAmount={coinAmount} />
+      <LiquidPriceBox
+        isLongSelected={isLongSelected}
+        longLiquid={longLiquid}
+        shortLiquid={shortLiquid}
+      />
       {isLongSelected ? (
-        <View>
-          <TradeButton
-            isCandleMoving={isCandleMoving}
-            buttonHandler={buyButtonHandler}
-            isBuy={true}
-          />
-        </View>
+        <TradeButton
+          isCandleMoving={isCandleMoving}
+          buttonHandler={buyButtonHandler}
+          isBuy={true}
+        />
       ) : (
-        <View>
-          <TradeButton
-            isCandleMoving={isCandleMoving}
-            buttonHandler={sellButtonHandler}
-            isBuy={false}
-          />
-        </View>
+        <TradeButton
+          isCandleMoving={isCandleMoving}
+          buttonHandler={sellButtonHandler}
+          isBuy={false}
+        />
       )}
     </View>
   );
 }
 
-export default memo(TradeController);
+export default TradeController;

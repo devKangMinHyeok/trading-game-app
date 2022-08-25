@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import {
   cashAccountState,
@@ -10,10 +10,10 @@ import {
   shortAccountDetailState,
   shortAccountState,
 } from "../../atom";
-import convertKrNumberType from "../../functions/convertKrNumberType";
 import rootStyles from "../../styles/rootStyles";
 import EmptyPositionBox from "./EmptyPositionBox";
-import PositionBox from "./PositionBox";
+import PositionBox from "./position-box/PositionBox";
+import PositionInfoViewer from "./PositionInfoViewer";
 
 function PositionInfo() {
   const isCandleMoving = useRecoilValue(isCandleMovingState);
@@ -41,24 +41,18 @@ function PositionInfo() {
 
   return (
     <View style={rootStyles.positionInfo}>
-      {longAccountDetail.positionActive ? (
-        <PositionBox
-          accountDetail={longAccountDetail}
-          closeHandler={longCloseHandler}
-          isLong={true}
-        />
-      ) : (
-        <EmptyPositionBox />
-      )}
-      {shortAccountDetail.positionActive ? (
-        <PositionBox
-          accountDetail={shortAccountDetail}
-          closeHandler={shortCloseHandler}
-          isLong={false}
-        />
-      ) : (
-        <EmptyPositionBox />
-      )}
+      <PositionInfoViewer
+        positionActive={longAccountDetail.positionActive}
+        accountDetail={longAccountDetail}
+        closeHandler={longCloseHandler}
+        isLong={true}
+      />
+      <PositionInfoViewer
+        positionActive={shortAccountDetail.positionActive}
+        accountDetail={shortAccountDetail}
+        closeHandler={shortCloseHandler}
+        isLong={false}
+      />
     </View>
   );
 }

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Text, View } from "react-native";
 
 function EmptyPositionBox() {
@@ -8,4 +9,4 @@ function EmptyPositionBox() {
   );
 }
 
-export default EmptyPositionBox;
+export default memo(EmptyPositionBox);

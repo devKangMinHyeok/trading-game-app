@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Text, View } from "react-native";
-import convertKrNumberType from "../../../functions/convertKrNumberType";
+import convertKrNumberType from "../../../../../functions/convertKrNumberType";
 
 interface LiquidPriceBoxProps {
   isLongSelected: boolean;

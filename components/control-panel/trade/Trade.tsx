@@ -4,8 +4,8 @@ import { useRecoilState } from "recoil";
 import { isLongControllerActiveState } from "../../../atom";
 import rootStyles from "../../../styles/rootStyles";
 import CustomToggleSwitch from "../../assets/CustomSwitch";
-import LongTradeController from "./long-trade-controller/LongTradeController";
-import ShortTradeController from "./short-trade-controller/ShortTradeController";
+import LongTradeController from "./trade-controller/LongTradeController";
+import ShortTradeController from "./trade-controller/ShortTradeController";
 
 function Trade() {
   const [isLongSelected, setIsLongSelected] = useRecoilState(
