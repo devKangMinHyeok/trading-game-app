@@ -9,7 +9,6 @@ import {
   VictoryChart,
   VictoryCursorContainer,
   VictoryLine,
-  VictoryLabel,
 } from "victory-native";
 import {
   candleDataState,
@@ -169,12 +168,21 @@ function CandleChart() {
             }
           />
         }
+        style={{
+          parent: {
+            backgroundColor: "transparent",
+          },
+          background: {
+            fill: "black",
+          },
+        }}
       >
         <VictoryAxis
           dependentAxis
+          offsetX={50}
+          orientation="right"
           style={{ grid: { stroke: "#b6b6b6", strokeWidth: 0.5 } }}
         />
-
         <VictoryCandlestick
           candleRatio={0.85}
           style={{
@@ -190,6 +198,7 @@ function CandleChart() {
             y: chartYDomain,
           }}
         />
+
         <VictoryLine
           domain={{
             x: chartXDomain,
