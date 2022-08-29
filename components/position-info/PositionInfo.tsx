@@ -41,18 +41,24 @@ function PositionInfo() {
 
   return (
     <View style={rootStyles.positionInfo}>
-      <PositionInfoViewer
-        positionActive={longAccountDetail.positionActive}
-        accountDetail={longAccountDetail}
-        closeHandler={longCloseHandler}
-        isLong={true}
-      />
-      <PositionInfoViewer
-        positionActive={shortAccountDetail.positionActive}
-        accountDetail={shortAccountDetail}
-        closeHandler={shortCloseHandler}
-        isLong={false}
-      />
+      {longAccountDetail.positionActive ? (
+        <PositionInfoViewer
+          accountDetail={longAccountDetail}
+          closeHandler={longCloseHandler}
+          isLong={true}
+        />
+      ) : null}
+      {shortAccountDetail.positionActive ? (
+        <PositionInfoViewer
+          accountDetail={shortAccountDetail}
+          closeHandler={shortCloseHandler}
+          isLong={false}
+        />
+      ) : null}
+      {!longAccountDetail.positionActive &&
+      !shortAccountDetail.positionActive ? (
+        <EmptyPositionBox />
+      ) : null}
     </View>
   );
 }

@@ -51,7 +51,9 @@ function TradeController({
     if (isLongSelected) {
       if (!isCandleMoving) {
         setCashAccount((prev) => prev - totalPrice);
-        if (!longAccountDetail.positionActive && coinAmount > 0) {
+        if (shortAccountDetail.positionActive) {
+          alert("Long 포지션과 Short 포지션을 동시에 보유할 수 없습니다.");
+        } else if (!longAccountDetail.positionActive && coinAmount > 0) {
           const newLongAccount = {
             positionActive: true,
             openPrice: lastClosePrice,
@@ -100,7 +102,9 @@ function TradeController({
     if (!isLongSelected) {
       if (!isCandleMoving) {
         setCashAccount((prev) => prev - totalPrice);
-        if (!shortAccountDetail.positionActive && coinAmount > 0) {
+        if (longAccountDetail.positionActive) {
+          alert("Long 포지션과 Short 포지션을 동시에 보유할 수 없습니다.");
+        } else if (!shortAccountDetail.positionActive && coinAmount > 0) {
           const newShortAccount = {
             positionActive: true,
             openPrice: lastClosePrice,
