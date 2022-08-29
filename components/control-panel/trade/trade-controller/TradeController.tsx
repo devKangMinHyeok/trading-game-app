@@ -173,6 +173,10 @@ function TradeController({
         setShortLiquid(lastClosePrice * (1 + 1 / leverage));
       }
     }
+    return () => {
+      setLongLiquid(0);
+      setShortLiquid(0);
+    };
   }, [lastClosePrice, leverage, isCandleMoving, isLongSelected]);
 
   useEffect(() => {
