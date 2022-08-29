@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native";
 
-const { width: SCREEN_WIDTH } = Dimensions.get("window");
+export const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
 const rootStyles = StyleSheet.create({
   display: {
@@ -28,7 +28,7 @@ const rootStyles = StyleSheet.create({
   },
 
   positionInfo: {
-    flex: 0.8,
+    flex: 1.4,
     flexDirection: "row",
     justifyContent: "space-around",
     backgroundColor: "green",
