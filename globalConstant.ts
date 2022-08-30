@@ -2,6 +2,8 @@ import { ICandleStick } from "./interfaces/interface";
 
 // Chart
 export const LABEL_GAP_OF_LINE = 3;
+export const DOMAIN_PADDING = 25;
+export const CANDLE_WIDTH = 10;
 
 export const SPLIT_UNIT_OF_CANDLE = 20;
 export const CANDLE_MOVING_UNIT_MS = 150;
@@ -18,7 +20,7 @@ export const LAST_OF_INITIAL_CANDLE_LOW = 140;
 
 export const CANDLE_INITIAL_DATE = new Date(2022, 0, 1);
 
-export const CHART_X_DOMAIN_LENGTH = 15;
+export const CHART_X_DOMAIN_LENGTH = 20;
 export const CHART_Y_DOMAIN_PADDING = 15;
 
 // Account

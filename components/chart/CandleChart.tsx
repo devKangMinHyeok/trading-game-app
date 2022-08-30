@@ -29,8 +29,10 @@ import calDate from "../../functions/calDate";
 import candleGenerator from "../../functions/candleGenerator";
 import {
   CANDLE_MOVING_UNIT_MS,
+  CANDLE_WIDTH,
   CHART_X_DOMAIN_LENGTH,
   CHART_Y_DOMAIN_PADDING,
+  DOMAIN_PADDING,
   INITIAL_CANDLE_LOW,
   LABEL_GAP_OF_LINE,
   LAST_OF_INITIAL_CANDLE_HIGH,
@@ -78,7 +80,7 @@ function CandleChart() {
           newData[newData.length - 1] = newCandle;
         } else {
           newData.push(newCandle);
-          newData.shift();
+          if (newData.length > CHART_X_DOMAIN_LENGTH) newData.shift();
         }
         return newData;
       });
@@ -170,7 +172,7 @@ function CandleChart() {
     <View>
       <VictoryChart
         width={Dimensions.get("window").width}
-        domainPadding={{ x: 35 }}
+        domainPadding={{ x: DOMAIN_PADDING }}
         containerComponent={
           <VictoryCursorContainer
             cursorLabel={({ datum }) =>
@@ -194,7 +196,7 @@ function CandleChart() {
           style={{ grid: { stroke: "#b6b6b6", strokeWidth: 0.5 } }}
         />
         <VictoryCandlestick
-          candleWidth={12}
+          candleWidth={CANDLE_WIDTH}
           style={{
             data: {
               strokeWidth: 1,
