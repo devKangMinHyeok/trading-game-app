@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { View } from "react-native";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import { VictoryContainer, VictoryPie } from "victory-native";
@@ -10,8 +10,10 @@ import {
   longAccountState,
   shortAccountDetailState,
   shortAccountState,
+  totalAccountState,
 } from "../../atom";
-import rootStyles, { SCREEN_WIDTH } from "../../styles/rootStyles";
+import rootStyles from "../../styles/rootStyles";
+import CustomVictoryPie from "../assets/CustomVictoryPie";
 import EmptyPositionBox from "./EmptyPositionBox";
 import PositionInfoViewer from "./PositionInfoViewer";
 
@@ -23,7 +25,15 @@ function PositionInfo() {
   const resetLongAccount = useResetRecoilState(longAccountState);
   const shortAccountDetail = useRecoilValue(shortAccountDetailState);
   const resetShortAccount = useResetRecoilState(shortAccountState);
+  const totalAcount = useRecoilValue(totalAccountState);
   const lastClosePrice = useRecoilValue(lastClosePriceState);
+
+  const [pieCashRate, setPieCashRate] = useState(
+    totalAcount.cash / totalAcount.totalAsset
+  );
+  const [pieFutureRate, setPieFutureRate] = useState(
+    totalAcount.futureValuation / totalAcount.totalAsset
+  );
 
   const longCloseHandler = () => {
     if (!isCandleMoving) {
@@ -39,22 +49,19 @@ function PositionInfo() {
     }
   };
 
+  useEffect(() => {
+    if (!isCandleMoving) {
+      setPieCashRate(totalAcount.cash / totalAcount.totalAsset);
+      setPieFutureRate(totalAcount.futureValuation / totalAcount.totalAsset);
+    }
+  }, [isCandleMoving, totalAcount]);
+
   return (
     <View style={rootStyles.positionInfo}>
-      <View style={{ flex: 1, backgroundColor: "blue" }}>
-        <VictoryPie
-          width={SCREEN_WIDTH / 2}
-          height={SCREEN_WIDTH / 2}
-          padding={{ top: 30, bottom: 30 }}
-          data={[
-            { x: "Cats", y: 35 },
-            { x: "Dogs", y: 40 },
-            { x: "Birds", y: 55 },
-          ]}
-          labels={({ datum }) => datum.y}
-          labelPosition={"centroid"}
-          labelRadius={({ innerRadius }) => Number(innerRadius) + 50}
-          containerComponent={<VictoryContainer responsive={true} />}
+      <View style={{ flex: 1 }}>
+        <CustomVictoryPie
+          pieCashRate={pieCashRate}
+          pieFutureRate={pieFutureRate}
         />
       </View>
       <View style={{ flex: 1 }}>
