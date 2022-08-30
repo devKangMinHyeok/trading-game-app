@@ -1,12 +1,26 @@
 import { ICandleStick } from "./interfaces/interface";
 
-// Chart
-export const LABEL_GAP_OF_LINE = 3;
-export const DOMAIN_PADDING = 25;
-export const CANDLE_WIDTH = 10;
+// Chart Style
+export const LABEL_GAP_OF_LINE = 2;
+export const DOMAIN_PADDING = 15;
+export const CANDLE_WIDTH = 8;
 
+export const CHART_X_DOMAIN_LENGTH = 25;
+export const CHART_Y_DOMAIN_PADDING = 15;
+
+export const TRADE_PRICE_STROKE_WIDTH = 1.5;
+export const TRADE_PRICE_STROKE_DASH_ARRAY = 1;
+
+export const LIQUID_PRICE_STROKE_WIDTH = 1.5;
+
+export const OPEN_PRICE_STROKE_WIDTH = 1.5;
+export const OPEN_PRICE_STROKE_DASH_ARRAY = 1.5;
+
+export const LEFT_LABEL_FONT_SIZE = 9;
+
+// Chart System
 export const SPLIT_UNIT_OF_CANDLE = 20;
-export const CANDLE_MOVING_UNIT_MS = 150;
+export const CANDLE_MOVING_UNIT_MS = 200;
 
 export const INITIAL_CANDLE_OPEN = 100;
 export const INITIAL_CANDLE_CLOSE = 110;
@@ -19,9 +33,6 @@ export const LAST_OF_INITIAL_CANDLE_HIGH = 170;
 export const LAST_OF_INITIAL_CANDLE_LOW = 140;
 
 export const CANDLE_INITIAL_DATE = new Date(2022, 0, 1);
-
-export const CHART_X_DOMAIN_LENGTH = 20;
-export const CHART_Y_DOMAIN_PADDING = 15;
 
 // Account
 export const INITIAL_CASH = 1000000;

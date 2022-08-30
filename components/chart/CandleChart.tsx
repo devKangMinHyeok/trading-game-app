@@ -1,10 +1,9 @@
 import { cloneDeep, round } from "lodash";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Dimensions, View } from "react-native";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import { DomainTuple } from "victory-core";
 import {
-  createContainer,
   VictoryAxis,
   VictoryCandlestick,
   VictoryChart,
@@ -36,11 +35,18 @@ import {
   INITIAL_CANDLE_LOW,
   LABEL_GAP_OF_LINE,
   LAST_OF_INITIAL_CANDLE_HIGH,
+  LEFT_LABEL_FONT_SIZE,
+  LIQUID_PRICE_STROKE_WIDTH,
+  OPEN_PRICE_STROKE_DASH_ARRAY,
+  OPEN_PRICE_STROKE_WIDTH,
   SPLIT_UNIT_OF_CANDLE,
+  TRADE_PRICE_STROKE_DASH_ARRAY,
+  TRADE_PRICE_STROKE_WIDTH,
 } from "../../globalConstant";
 import { ICandleStick } from "../../interfaces/interface";
 
 function CandleChart() {
+  // console.log("렌더링");
   const turnNumber = useRecoilValue(turnNumberState);
   const [candleData, setCandleData] = useRecoilState(candleDataState);
   const [isCandleMoving, setIsCandleMoving] =
@@ -68,58 +74,57 @@ function CandleChart() {
     LAST_OF_INITIAL_CANDLE_HIGH + CHART_Y_DOMAIN_PADDING,
   ]);
 
-  const updateCandleData = (
-    newCandle: ICandleStick,
-    index: number,
-    lastIndex: number
-  ) => {
-    return setTimeout(() => {
-      setCandleData((prev) => {
-        const newData = [...prev];
-        if (newData.slice(-1)[0].x.toString() == newCandle.x.toString()) {
-          newData[newData.length - 1] = newCandle;
-        } else {
-          newData.push(newCandle);
-          if (newData.length > CHART_X_DOMAIN_LENGTH) newData.shift();
-        }
-        return newData;
-      });
-
-      setLastClosePrice(newCandle.close);
-
-      if (longAccountDetail.positionActive) {
-        setLongAccount((prev) => {
-          const newLog = cloneDeep(prev);
-          newLog.currentPositionValue =
-            newCandle.close * newLog.openPositionAmount;
-          return newLog;
+  const updateCandleData = useCallback(
+    (newCandle: ICandleStick, index: number, lastIndex: number) => {
+      return setTimeout(() => {
+        setCandleData((prev) => {
+          const newData = [...prev];
+          if (newData.slice(-1)[0].x.toString() == newCandle.x.toString()) {
+            newData[newData.length - 1] = newCandle;
+          } else {
+            newData.push(newCandle);
+            if (newData.length > CHART_X_DOMAIN_LENGTH) newData.shift();
+          }
+          return newData;
         });
-        if (longAccountDetail.liquidPrice >= newCandle.low) {
-          resetLongAccount();
-        }
-      }
 
-      if (shortAccountDetail.positionActive) {
-        setShortAccount((prev) => {
-          const newLog = cloneDeep(prev);
-          newLog.currentPositionValue =
-            newCandle.close * newLog.openPositionAmount;
-          return newLog;
-        });
-        if (shortAccountDetail.liquidPrice <= newCandle.high) {
-          resetShortAccount();
-        }
-      }
+        setLastClosePrice(newCandle.close);
 
-      if (index === lastIndex) {
-        setIsCandleMoving(false);
-      }
-    }, CANDLE_MOVING_UNIT_MS * index);
-  };
+        if (longAccountDetail.positionActive) {
+          setLongAccount((prev) => {
+            const newLog = cloneDeep(prev);
+            newLog.currentPositionValue =
+              newCandle.close * newLog.openPositionAmount;
+            return newLog;
+          });
+          if (longAccountDetail.liquidPrice >= newCandle.low) {
+            resetLongAccount();
+          }
+        }
+
+        if (shortAccountDetail.positionActive) {
+          setShortAccount((prev) => {
+            const newLog = cloneDeep(prev);
+            newLog.currentPositionValue =
+              newCandle.close * newLog.openPositionAmount;
+            return newLog;
+          });
+          if (shortAccountDetail.liquidPrice <= newCandle.high) {
+            resetShortAccount();
+          }
+        }
+
+        if (index === lastIndex) {
+          setIsCandleMoving(false);
+        }
+      }, CANDLE_MOVING_UNIT_MS * index);
+    },
+    [longAccountDetail, shortAccountDetail]
+  );
 
   useEffect(() => {
-    const timers: NodeJS.Timeout[] = [];
     if (turnNumber > 1) {
+      const timers: NodeJS.Timeout[] = [];
       const lastDate = candleData.slice(-1)[0].x;
       const nextDate = calDate(new Date(lastDate), 1);
       const lastPrice = candleData.slice(-1)[0].close;
@@ -222,8 +227,8 @@ function CandleChart() {
             data: {
               stroke: (d: any) =>
                 lastClosePrice > lastOpenPrice ? "#c43a31" : "#1759bb",
-              strokeWidth: 1,
-              strokeDasharray: 1,
+              strokeWidth: TRADE_PRICE_STROKE_WIDTH,
+              strokeDasharray: TRADE_PRICE_STROKE_DASH_ARRAY,
             },
           }}
         />
@@ -237,7 +242,7 @@ function CandleChart() {
               y: longAccountDetail.liquidPrice,
             }}
             textAnchor="end"
-            style={{ fontSize: 9 }}
+            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
           />
         ) : (
           <VictoryLabel
@@ -247,7 +252,7 @@ function CandleChart() {
               y: longLiquid,
             }}
             textAnchor="end"
-            style={{ fontSize: 9 }}
+            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
           />
         )}
         {longAccountDetail.positionActive ? (
@@ -260,7 +265,7 @@ function CandleChart() {
             style={{
               data: {
                 stroke: "#008496",
-                strokeWidth: 1.5,
+                strokeWidth: LIQUID_PRICE_STROKE_WIDTH,
               },
             }}
           />
@@ -274,7 +279,7 @@ function CandleChart() {
             style={{
               data: {
                 stroke: "#40ca00",
-                strokeWidth: 1.5,
+                strokeWidth: LIQUID_PRICE_STROKE_WIDTH,
               },
             }}
           />
@@ -289,7 +294,7 @@ function CandleChart() {
               y: shortAccountDetail.liquidPrice,
             }}
             textAnchor="end"
-            style={{ fontSize: 9 }}
+            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
           />
         ) : (
           <VictoryLabel
@@ -299,7 +304,7 @@ function CandleChart() {
               y: shortLiquid,
             }}
             textAnchor="end"
-            style={{ fontSize: 9 }}
+            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
           />
         )}
         {shortAccountDetail.positionActive ? (
@@ -312,7 +317,7 @@ function CandleChart() {
             style={{
               data: {
                 stroke: "#890096",
-                strokeWidth: 1.5,
+                strokeWidth: LIQUID_PRICE_STROKE_WIDTH,
               },
             }}
           />
@@ -326,7 +331,7 @@ function CandleChart() {
             style={{
               data: {
                 stroke: "#890096",
-                strokeWidth: 1.5,
+                strokeWidth: LIQUID_PRICE_STROKE_WIDTH,
               },
             }}
           />
@@ -341,7 +346,7 @@ function CandleChart() {
               y: longAccountDetail.openPrice,
             }}
             textAnchor="end"
-            style={{ fontSize: 9 }}
+            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
           />
         ) : null}
         {longAccountDetail.positionActive ? (
@@ -354,8 +359,8 @@ function CandleChart() {
             style={{
               data: {
                 stroke: "#40ca00",
-                strokeWidth: 1,
-                strokeDasharray: 1.5,
+                strokeWidth: OPEN_PRICE_STROKE_WIDTH,
+                strokeDasharray: OPEN_PRICE_STROKE_DASH_ARRAY,
               },
             }}
           />
@@ -370,7 +375,7 @@ function CandleChart() {
               y: shortAccountDetail.openPrice,
             }}
             textAnchor="end"
-            style={{ fontSize: 9 }}
+            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
           />
         ) : null}
         {shortAccountDetail.positionActive ? (
@@ -383,8 +388,8 @@ function CandleChart() {
             style={{
               data: {
                 stroke: "#fc852a",
-                strokeWidth: 0.5,
-                strokeDasharray: 1.5,
+                strokeWidth: OPEN_PRICE_STROKE_WIDTH,
+                strokeDasharray: OPEN_PRICE_STROKE_DASH_ARRAY,
               },
             }}
           />
