@@ -78,6 +78,7 @@ function CandleChart() {
           newData[newData.length - 1] = newCandle;
         } else {
           newData.push(newCandle);
+          newData.shift();
         }
         return newData;
       });
@@ -147,8 +148,8 @@ function CandleChart() {
     setChartXDomain([startDate, lastDate]);
 
     // y domain
-    let lowestPrice = Number(chartYDomain[0]) + CHART_Y_DOMAIN_PADDING;
-    let highestPrice = Number(chartYDomain[1]) - CHART_Y_DOMAIN_PADDING;
+    let lowestPrice = 10000000000;
+    let highestPrice = 0;
 
     targetCandles.forEach((ele) => {
       if (ele.low < lowestPrice) {

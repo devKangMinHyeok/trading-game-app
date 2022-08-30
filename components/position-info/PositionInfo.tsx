@@ -1,7 +1,6 @@
 import { memo, useEffect, useState } from "react";
 import { View } from "react-native";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
-import { VictoryContainer, VictoryPie } from "victory-native";
 import {
   cashAccountState,
   isCandleMovingState,
