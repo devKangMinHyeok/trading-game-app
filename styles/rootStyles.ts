@@ -17,6 +17,7 @@ const rootStyles = StyleSheet.create({
   chart: {
     flex: 1.5,
     justifyContent: "center",
+    overflow: "hidden",
   },
 
   middleAccount: {

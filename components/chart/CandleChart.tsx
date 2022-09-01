@@ -44,6 +44,7 @@ import {
   TRADE_PRICE_STROKE_WIDTH,
 } from "../../globalConstant";
 import { ICandleStick } from "../../interfaces/interface";
+import theme from "../../styles/theme";
 
 function CandleChart() {
   // console.log("렌더링");
@@ -190,7 +191,7 @@ function CandleChart() {
             backgroundColor: "transparent",
           },
           background: {
-            fill: "transparent",
+            fill: theme.colors.backgroundColor1,
           },
         }}
       >
@@ -205,10 +206,16 @@ function CandleChart() {
           style={{
             data: {
               strokeWidth: 1,
-              stroke: (d: any) => (d.close < d.open ? "#c43a31" : "#3069be"),
+              stroke: (d: any) =>
+                d.close < d.open
+                  ? theme.colors.longCandleColor
+                  : theme.colors.shortCandleColor,
             },
           }}
-          candleColors={{ positive: "#c43a31", negative: "#4f7cbe" }}
+          candleColors={{
+            positive: theme.colors.longCandleColor,
+            negative: theme.colors.shortCandleColor,
+          }}
           data={candleData}
           domain={{
             x: chartXDomain,
@@ -226,7 +233,9 @@ function CandleChart() {
           style={{
             data: {
               stroke: (d: any) =>
-                lastClosePrice > lastOpenPrice ? "#c43a31" : "#1759bb",
+                lastClosePrice > lastOpenPrice
+                  ? theme.colors.longCandleColor
+                  : theme.colors.shortCandleColor,
               strokeWidth: TRADE_PRICE_STROKE_WIDTH,
               strokeDasharray: TRADE_PRICE_STROKE_DASH_ARRAY,
             },
@@ -264,7 +273,7 @@ function CandleChart() {
             y={() => longAccountDetail.liquidPrice}
             style={{
               data: {
-                stroke: "#008496",
+                stroke: theme.colors.longLiquidActiveLineColor,
                 strokeWidth: LIQUID_PRICE_STROKE_WIDTH,
               },
             }}
@@ -278,7 +287,7 @@ function CandleChart() {
             y={() => longLiquid}
             style={{
               data: {
-                stroke: "#40ca00",
+                stroke: theme.colors.longLiquidInactiveLineColor,
                 strokeWidth: LIQUID_PRICE_STROKE_WIDTH,
               },
             }}
@@ -316,7 +325,7 @@ function CandleChart() {
             y={() => shortAccountDetail.liquidPrice}
             style={{
               data: {
-                stroke: "#890096",
+                stroke: theme.colors.shortLiquidActiveLineColor,
                 strokeWidth: LIQUID_PRICE_STROKE_WIDTH,
               },
             }}
@@ -330,7 +339,7 @@ function CandleChart() {
             y={() => shortLiquid}
             style={{
               data: {
-                stroke: "#890096",
+                stroke: theme.colors.shortLiquidInactiveLineColor,
                 strokeWidth: LIQUID_PRICE_STROKE_WIDTH,
               },
             }}
@@ -358,7 +367,7 @@ function CandleChart() {
             y={() => longAccountDetail.openPrice}
             style={{
               data: {
-                stroke: "#40ca00",
+                stroke: theme.colors.openPriceLineColor,
                 strokeWidth: OPEN_PRICE_STROKE_WIDTH,
                 strokeDasharray: OPEN_PRICE_STROKE_DASH_ARRAY,
               },
@@ -387,7 +396,7 @@ function CandleChart() {
             y={() => shortAccountDetail.openPrice}
             style={{
               data: {
-                stroke: "#fc852a",
+                stroke: theme.colors.openPriceLineColor,
                 strokeWidth: OPEN_PRICE_STROKE_WIDTH,
                 strokeDasharray: OPEN_PRICE_STROKE_DASH_ARRAY,
               },
