@@ -1,13 +1,14 @@
-import { CandlestickData, UTCTimestamp } from "lightweight-charts";
 import { atom, selector } from "recoil";
 import {
-  INITIAL_CANDLE_CLOSE,
-  INITIAL_CANDLE_HIGH,
   INITIAL_CANDLE_SET,
+  INITIAL_CASH,
   LAST_OF_INITIAL_CANDLE_CLOSE,
   LAST_OF_INITIAL_CANDLE_HIGH,
   LAST_OF_INITIAL_CANDLE_LOW,
   LAST_OF_INITIAL_CANDLE_OPEN,
+  NEGATIVE,
+  POSITIVE,
+  ZERO,
 } from "./globalConstant";
 import {
   IFutureAccount,
@@ -119,6 +120,8 @@ export const longAccountDetailState = selector({
       unrealizedPnl,
       profitRate: unrealizedPnl / longAccount.openPositionValue,
       totalAsset: unrealizedPnl + longAccount.openPositionValue,
+      isPositive:
+        unrealizedPnl > 0 ? POSITIVE : unrealizedPnl < 0 ? NEGATIVE : ZERO,
     } as IFutureAccountDetail;
   },
 });
@@ -159,6 +162,7 @@ export const totalFutureAccountState = selector({
       shortAccountDetail.currentPositionValue;
     const unrealizedPnl =
       longAccountDetail.unrealizedPnl + shortAccountDetail.unrealizedPnl;
+
     return {
       positionActive:
         longAccountDetail.positionActive || shortAccountDetail.positionActive,
@@ -167,6 +171,8 @@ export const totalFutureAccountState = selector({
       unrealizedPnl,
       profitRate: unrealizedPnl / openPositionValue,
       totalAsset: unrealizedPnl + openPositionValue,
+      isPositive:
+        unrealizedPnl > 0 ? POSITIVE : unrealizedPnl < 0 ? NEGATIVE : ZERO,
     } as ITotalFutureAccount;
   },
 });
@@ -180,12 +186,15 @@ export const totalAccountState = selector({
     const openValuation = futureAccount.openPositionValue + cashAccount;
     const totalAsset = cashAccount + futureAccount.totalAsset;
     const unrealizedPnl = totalAsset - openValuation;
+    const realizedPnl = totalAsset - INITIAL_CASH;
     return {
       cash: cashAccount,
       futureValuation: futureAccount.totalAsset,
       totalAsset,
       unrealizedPnl,
       profitRate: unrealizedPnl / openValuation,
+      isPositive:
+        realizedPnl > 0 ? POSITIVE : realizedPnl < 0 ? NEGATIVE : ZERO,
     } as ITotalAccount;
   },
 });

@@ -27,6 +27,7 @@ export interface IFutureAccountDetail {
   unrealizedPnl: number;
   profitRate: number;
   totalAsset: number;
+  isPositive: string;
 }
 
 export interface ITotalFutureAccount {
@@ -36,6 +37,7 @@ export interface ITotalFutureAccount {
   unrealizedPnl: number;
   profitRate: number;
   totalAsset: number;
+  isPositive: string;
 }
 
 export interface ITotalAccount {
@@ -44,4 +46,5 @@ export interface ITotalAccount {
   totalAsset: number;
   unrealizedPnl: number;
   profitRate: number;
+  isPositive: string;
 }

@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import theme from "./theme";
 
 export const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
@@ -9,9 +10,12 @@ const rootStyles = StyleSheet.create({
   },
 
   topAccount: {
-    flex: 0.4,
-    justifyContent: "flex-end",
-    backgroundColor: "#dbffe3",
+    flexDirection: "row",
+    flex: 0.5,
+    gap: 5,
+    justifyContent: "center",
+    alignItems: "flex-end",
+    backgroundColor: theme.colors.backgroundColor1,
   },
 
   chart: {

@@ -38,6 +38,10 @@ export const CANDLE_INITIAL_DATE = new Date(2022, 0, 1);
 export const INITIAL_CASH = 1000000;
 export const TRANSACTION_FEE_RATE = 0.04;
 
+export const POSITIVE = "positive";
+export const NEGATIVE = "negative";
+export const ZERO = "zero";
+
 // Leverage
 export const INIT_LEVERAGE = 1;
 export const LEVERAGE_MIN = 1;
