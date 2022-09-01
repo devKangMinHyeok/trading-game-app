@@ -29,7 +29,7 @@ export const INITIAL_CANDLE_LOW = 90;
 
 export const LAST_OF_INITIAL_CANDLE_OPEN = 180;
 export const LAST_OF_INITIAL_CANDLE_CLOSE = 150;
-export const LAST_OF_INITIAL_CANDLE_HIGH = 170;
+export const LAST_OF_INITIAL_CANDLE_HIGH = 180;
 export const LAST_OF_INITIAL_CANDLE_LOW = 140;
 
 export const CANDLE_INITIAL_DATE = new Date(2022, 0, 1);

@@ -205,10 +205,10 @@ function CandleChart() {
           style={{
             data: {
               strokeWidth: 1,
-              stroke: (d: any) => (d.close < d.open ? "#c43a31" : "#1759bb"),
+              stroke: (d: any) => (d.close < d.open ? "#c43a31" : "#3069be"),
             },
           }}
-          candleColors={{ positive: "#c43a31", negative: "#1759bb" }}
+          candleColors={{ positive: "#c43a31", negative: "#4f7cbe" }}
           data={candleData}
           domain={{
             x: chartXDomain,
