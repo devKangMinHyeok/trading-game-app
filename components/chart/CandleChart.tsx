@@ -44,6 +44,7 @@ import {
   TRADE_PRICE_STROKE_WIDTH,
 } from "../../globalConstant";
 import { ICandleStick } from "../../interfaces/interface";
+import { sharedLabelStyle } from "../../styles/chartStyles";
 import theme from "../../styles/theme";
 
 function CandleChart() {
@@ -199,7 +200,13 @@ function CandleChart() {
           dependentAxis
           offsetX={50}
           orientation="right"
-          style={{ grid: { stroke: "#b6b6b6", strokeWidth: 0.5 } }}
+          style={{
+            grid: { stroke: "#b6b6b6", strokeWidth: 0.5 },
+            tickLabels: {
+              fill: theme.colors.textColor,
+              fontSize: 14,
+            },
+          }}
         />
         <VictoryCandlestick
           candleWidth={CANDLE_WIDTH}
@@ -251,7 +258,7 @@ function CandleChart() {
               y: longAccountDetail.liquidPrice,
             }}
             textAnchor="end"
-            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
+            style={sharedLabelStyle}
           />
         ) : (
           <VictoryLabel
@@ -261,7 +268,7 @@ function CandleChart() {
               y: longLiquid,
             }}
             textAnchor="end"
-            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
+            style={sharedLabelStyle}
           />
         )}
         {longAccountDetail.positionActive ? (
@@ -303,7 +310,7 @@ function CandleChart() {
               y: shortAccountDetail.liquidPrice,
             }}
             textAnchor="end"
-            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
+            style={sharedLabelStyle}
           />
         ) : (
           <VictoryLabel
@@ -313,7 +320,7 @@ function CandleChart() {
               y: shortLiquid,
             }}
             textAnchor="end"
-            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
+            style={sharedLabelStyle}
           />
         )}
         {shortAccountDetail.positionActive ? (
@@ -355,7 +362,7 @@ function CandleChart() {
               y: longAccountDetail.openPrice,
             }}
             textAnchor="end"
-            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
+            style={sharedLabelStyle}
           />
         ) : null}
         {longAccountDetail.positionActive ? (
@@ -384,7 +391,7 @@ function CandleChart() {
               y: shortAccountDetail.openPrice,
             }}
             textAnchor="end"
-            style={{ fontSize: LEFT_LABEL_FONT_SIZE }}
+            style={sharedLabelStyle}
           />
         ) : null}
         {shortAccountDetail.positionActive ? (

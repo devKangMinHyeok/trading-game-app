@@ -19,9 +19,10 @@ const rootStyles = StyleSheet.create({
   },
 
   chart: {
-    flex: 1.5,
+    flex: 1.6,
     justifyContent: "center",
     overflow: "hidden",
+    backgroundColor: theme.colors.backgroundColor1,
   },
 
   middleAccount: {

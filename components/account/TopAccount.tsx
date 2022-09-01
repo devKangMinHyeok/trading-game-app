@@ -19,7 +19,7 @@ function TopAccount() {
       <View style={{ flex: 1, alignItems: "flex-end" }}>
         <TopAccountText>총 보유자산 | </TopAccountText>
       </View>
-      <View style={{ flex: 1.5, flexDirection: "row", alignItems: "flex-end" }}>
+      <View style={{ flex: 2.3, flexDirection: "row", alignItems: "flex-end" }}>
         <TopAccountValue isPositive={totalAccount.isPositive}>
           {convertKrNumberType(Math.ceil(totalAccount.totalAsset))}원{" "}
         </TopAccountValue>
