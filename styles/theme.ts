@@ -22,6 +22,8 @@ interface IColors {
   shortLiquidInactiveLineColor: string;
 
   openPriceLineColor: string;
+
+  CloseButtonBackgroundColor: string;
 }
 
 const colors: IColors = {
@@ -41,13 +43,15 @@ const colors: IColors = {
   shortCandleColor: "#F6465D",
   negativePriceColor: "#F6465D",
 
-  longLiquidActiveLineColor: "#008496",
-  longLiquidInactiveLineColor: "#00849642",
+  longLiquidActiveLineColor: "#2be6ff",
+  longLiquidInactiveLineColor: "#2be6ff8e",
 
-  shortLiquidActiveLineColor: "#890096",
-  shortLiquidInactiveLineColor: "#8900963e",
+  shortLiquidActiveLineColor: "#ee32ff",
+  shortLiquidInactiveLineColor: "#ee32ff8c",
 
-  openPriceLineColor: "#5667ff",
+  openPriceLineColor: "#ffc56e",
+
+  CloseButtonBackgroundColor: "#ffffff3b",
 };
 
 interface IFont {
@@ -60,6 +64,10 @@ interface IFont {
   midiumTextFontSize: string;
   bigTextFontSize: string;
   smallTextFontSize: string;
+
+  boldFontWeight: number;
+  regularFontWeight: number;
+  lightFontWeight: number;
 }
 
 const font: IFont = {
@@ -72,6 +80,10 @@ const font: IFont = {
   bigTextFontSize: "16px",
   midiumTextFontSize: "14px",
   smallTextFontSize: "12px",
+
+  boldFontWeight: 600,
+  regularFontWeight: 500,
+  lightFontWeight: 400,
 };
 
 export interface ITheme {

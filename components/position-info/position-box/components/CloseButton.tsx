@@ -1,18 +1,20 @@
 import { memo } from "react";
 import { Text, TouchableOpacity } from "react-native";
+import { CloseButtonContainer } from "../../../../styles/buttonStyles";
+import { PositionCloseButtonText } from "../../../../styles/TextStyledComponents";
 
 interface CloseButtonProps {
+  isLong: boolean;
   closeHandler: () => void;
 }
 
-function CloseButton({ closeHandler }: CloseButtonProps) {
+function CloseButton({ isLong, closeHandler }: CloseButtonProps) {
   return (
-    <TouchableOpacity
-      style={{ backgroundColor: "red", height: "100%" }}
-      onPress={closeHandler}
-    >
-      <Text>Close</Text>
-    </TouchableOpacity>
+    <CloseButtonContainer onPress={closeHandler}>
+      <PositionCloseButtonText isLong={isLong}>
+        포지션 종료
+      </PositionCloseButtonText>
+    </CloseButtonContainer>
   );
 }
 

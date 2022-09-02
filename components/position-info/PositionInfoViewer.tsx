@@ -15,13 +15,11 @@ function PositionInfoViewer({
   isLong,
 }: PositionInfoViewerProps) {
   return (
-    <>
-      <PositionBox
-        accountDetail={accountDetail}
-        closeHandler={closeHandler}
-        isLong={isLong}
-      />
-    </>
+    <PositionBox
+      accountDetail={accountDetail}
+      closeHandler={closeHandler}
+      isLong={isLong}
+    />
   );
 }
 

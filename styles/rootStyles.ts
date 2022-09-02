@@ -37,7 +37,7 @@ const rootStyles = StyleSheet.create({
     flex: 1.4,
     flexDirection: "row",
     justifyContent: "space-around",
-    backgroundColor: "green",
+    backgroundColor: theme.colors.backgroundColor2,
   },
 
   controlPanel: {

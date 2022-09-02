@@ -63,7 +63,7 @@ function PositionInfo() {
           pieFutureRate={pieFutureRate}
         />
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1.3 }}>
         {longAccountDetail.positionActive ? (
           <PositionInfoViewer
             accountDetail={longAccountDetail}

@@ -1,14 +1,18 @@
 import { memo } from "react";
 import { Text, View } from "react-native";
+import { PositionLeverageBoxText } from "../../../../styles/TextStyledComponents";
 
 interface LeverageInfoBoxProps {
   leverage: number;
+  isLong: boolean;
 }
 
-function LeverageInfoBox({ leverage }: LeverageInfoBoxProps) {
+function LeverageInfoBox({ leverage, isLong }: LeverageInfoBoxProps) {
   return (
     <View>
-      <Text>레버리지 : x{leverage}</Text>
+      <PositionLeverageBoxText isLong={isLong}>
+        X{leverage}
+      </PositionLeverageBoxText>
     </View>
   );
 }

@@ -144,6 +144,8 @@ export const shortAccountDetailState = selector({
       unrealizedPnl,
       profitRate: unrealizedPnl / shortAccount.openPositionValue,
       totalAsset: unrealizedPnl + shortAccount.openPositionValue,
+      isPositive:
+        unrealizedPnl > 0 ? POSITIVE : unrealizedPnl < 0 ? NEGATIVE : ZERO,
     } as IFutureAccountDetail;
   },
 });

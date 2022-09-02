@@ -13,7 +13,7 @@ function CustomVictoryPie({
     <VictoryPie
       width={SCREEN_WIDTH / 2}
       height={SCREEN_WIDTH / 2}
-      padding={{ top: 30, bottom: 30 }}
+      padding={{ top: 20, bottom: 30, right: 30 }}
       animate={{ duration: 300 }}
       data={[
         { x: "현금", y: pieCashRate },
