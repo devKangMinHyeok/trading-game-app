@@ -3,5 +3,5 @@ import theme from "./theme";
 
 export const sharedLabelStyle = {
   fontSize: LEFT_LABEL_FONT_SIZE,
-  fill: theme.colors.textColor,
+  fill: theme.colors.baseTextColor,
 };

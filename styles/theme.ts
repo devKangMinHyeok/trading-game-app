@@ -2,7 +2,8 @@ interface IColors {
   backgroundColor1: string;
   backgroundColor2: string;
 
-  textColor: string;
+  baseTextColor: string;
+  toneDownTextColor: string;
   positiveTextColor: string;
   negativeTextColor: string;
 
@@ -25,9 +26,10 @@ interface IColors {
 
 const colors: IColors = {
   backgroundColor1: "#161A1E",
-  backgroundColor2: "#1e232911",
+  backgroundColor2: "#1e2227ff",
 
-  textColor: "#FFFFFF",
+  baseTextColor: "#FFFFFF",
+  toneDownTextColor: "#bebebe",
   positiveTextColor: "#32D993",
   negativeTextColor: "#F6465D",
 
@@ -50,15 +52,26 @@ const colors: IColors = {
 
 interface IFont {
   bigValueFontSize: string;
+  midiumValueFontSize: string;
+  smallValueFontSize: string;
+
   bigRateFontSize: string;
 
   midiumTextFontSize: string;
+  bigTextFontSize: string;
+  smallTextFontSize: string;
 }
 
 const font: IFont = {
   bigValueFontSize: "16px",
+  midiumValueFontSize: "14px",
+  smallValueFontSize: "12px",
+
   bigRateFontSize: "14px",
+
+  bigTextFontSize: "16px",
   midiumTextFontSize: "14px",
+  smallTextFontSize: "12px",
 };
 
 export interface ITheme {

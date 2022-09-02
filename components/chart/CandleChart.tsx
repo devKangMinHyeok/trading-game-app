@@ -203,7 +203,7 @@ function CandleChart() {
           style={{
             grid: { stroke: "#b6b6b6", strokeWidth: 0.5 },
             tickLabels: {
-              fill: theme.colors.textColor,
+              fill: theme.colors.baseTextColor,
               fontSize: 14,
             },
           }}

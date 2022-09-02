@@ -26,11 +26,11 @@ const rootStyles = StyleSheet.create({
   },
 
   middleAccount: {
-    flex: 0.3,
+    flex: 0.4,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "orange",
+    backgroundColor: theme.colors.backgroundColor2,
   },
 
   positionInfo: {

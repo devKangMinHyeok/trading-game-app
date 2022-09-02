@@ -11,9 +11,10 @@ interface ITextContainerProps extends IContainerProps {
 }
 
 export const BaseTextContainer = styled.Text`
-  color: ${(props: IContainerProps) => props.theme.colors.textColor};
+  color: ${(props: IContainerProps) => props.theme.colors.baseTextColor};
 `;
 
+// Top Account
 export const TopAccountText = styled(BaseTextContainer)`
   font-size: ${(props: IContainerProps) => props.theme.font.midiumTextFontSize};
 `;
@@ -26,7 +27,7 @@ export const TopAccountValue = styled(BaseTextContainer)`
       ? props.theme.colors.positiveTextColor
       : props.isPositive == NEGATIVE
       ? props.theme.colors.negativeTextColor
-      : props.theme.colors.textColor};
+      : props.theme.colors.baseTextColor};
 `;
 
 export const TopAccountRate = styled(BaseTextContainer)`
@@ -37,5 +38,15 @@ export const TopAccountRate = styled(BaseTextContainer)`
       ? props.theme.colors.positiveTextColor
       : props.isPositive == NEGATIVE
       ? props.theme.colors.negativeTextColor
-      : props.theme.colors.textColor};
+      : props.theme.colors.baseTextColor};
+`;
+
+// Middle Account
+export const MiddleAccountText = styled(BaseTextContainer)`
+  color: ${(props: IContainerProps) => props.theme.colors.toneDownTextColor};
+  font-size: ${(props: IContainerProps) => props.theme.font.smallTextFontSize};
+`;
+export const MiddleAccountValue = styled(BaseTextContainer)`
+  color: ${(props: IContainerProps) => props.theme.colors.baseTextColor};
+  font-size: ${(props: IContainerProps) => props.theme.font.bigValueFontSize};
 `;
