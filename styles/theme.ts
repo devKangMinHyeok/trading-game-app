@@ -25,6 +25,9 @@ interface IColors {
   openPriceLineColor: string;
 
   CloseButtonBackgroundColor: string;
+
+  resetButtonBackgroundColor: string;
+  nextTurnButtonBackgroundColor: string;
 }
 
 const colors: IColors = {
@@ -54,6 +57,9 @@ const colors: IColors = {
   openPriceLineColor: "#ffc56e",
 
   CloseButtonBackgroundColor: "#ffffff",
+
+  nextTurnButtonBackgroundColor: "#6c17ff",
+  resetButtonBackgroundColor: "#ff1616",
 };
 
 interface IFont {

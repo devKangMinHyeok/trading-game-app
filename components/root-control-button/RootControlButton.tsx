@@ -13,6 +13,10 @@ import {
   NextTurnButtonContainer,
 } from "../../styles/buttonStyles";
 import rootStyles from "../../styles/rootStyles";
+import {
+  NextTurnButtonText,
+  ResetButtonText,
+} from "../../styles/TextStyledComponents";
 
 function RootControlButton() {
   const [turnNumber, setTurnNumber] = useRecoilState(turnNumberState);
@@ -40,7 +44,7 @@ function RootControlButton() {
           onPress={resetButtonHandler}
           disabled={isCandleMoving}
         >
-          <Text>리셋</Text>
+          <ResetButtonText>리셋</ResetButtonText>
         </AccountResetButtonContainer>
       </View>
       <View
@@ -54,7 +58,7 @@ function RootControlButton() {
           onPress={nextTurnHandler}
           disabled={isCandleMoving}
         >
-          <Text>Next Turn</Text>
+          <NextTurnButtonText>Next Turn</NextTurnButtonText>
         </NextTurnButtonContainer>
       </View>
     </View>

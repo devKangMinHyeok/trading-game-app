@@ -26,7 +26,7 @@ const rootStyles = StyleSheet.create({
   },
 
   middleAccount: {
-    flex: 0.4,
+    flex: 0.3,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
@@ -34,14 +34,14 @@ const rootStyles = StyleSheet.create({
   },
 
   positionInfo: {
-    flex: 1.4,
+    flex: 1.3,
     flexDirection: "row",
     justifyContent: "space-around",
     backgroundColor: theme.colors.backgroundColor2,
   },
 
   controlPanel: {
-    flex: 1.7,
+    flex: 1.6,
     backgroundColor: "pink",
     flexDirection: "row",
   },
@@ -59,7 +59,7 @@ const rootStyles = StyleSheet.create({
   },
 
   rootControlButton: {
-    flex: 0.5,
+    flex: 1,
     backgroundColor: theme.colors.backgroundColor2,
     flexDirection: "row",
   },

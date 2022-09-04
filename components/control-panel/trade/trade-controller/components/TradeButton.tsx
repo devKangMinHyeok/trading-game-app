@@ -15,7 +15,11 @@ function TradeButton({
   isBuy,
 }: TradeButtonProps) {
   return (
-    <OpenButtonContainer onPress={buttonHandler} disabled={isCandleMoving}>
+    <OpenButtonContainer
+      isLong={isBuy}
+      onPress={buttonHandler}
+      disabled={isCandleMoving}
+    >
       <OpenButtonText isLong={isBuy}>
         {isBuy ? "BUY / 롱" : "Sell / 숏"}
       </OpenButtonText>

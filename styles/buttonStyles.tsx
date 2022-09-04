@@ -5,6 +5,10 @@ interface IContainerProps {
   theme?: ITheme;
 }
 
+interface IOpenContainerProps extends IContainerProps {
+  isLong: boolean;
+}
+
 export const BaseButton = styled.TouchableOpacity`
   background-color: ${(props: IContainerProps) =>
     props.theme.colors.CloseButtonBackgroundColor};
@@ -19,16 +23,24 @@ export const CloseButtonContainer = styled(BaseButton)`
 `;
 
 export const OpenButtonContainer = styled(BaseButton)`
+  background-color: ${(props: IOpenContainerProps) =>
+    props.isLong
+      ? props.theme.colors.longButtonColor
+      : props.theme.colors.shortButtonColor};
   width: 80%;
   height: 90%;
 `;
 
 export const AccountResetButtonContainer = styled(BaseButton)`
+  background-color: ${(props: IContainerProps) =>
+    props.theme.colors.resetButtonBackgroundColor};
   width: 80%;
-  height: 70%;
+  height: 50%;
 `;
 
 export const NextTurnButtonContainer = styled(BaseButton)`
+  background-color: ${(props: IContainerProps) =>
+    props.theme.colors.nextTurnButtonBackgroundColor};
   width: 80%;
-  height: 70%;
+  height: 50%;
 `;
