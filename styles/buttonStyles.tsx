@@ -5,23 +5,30 @@ interface IContainerProps {
   theme?: ITheme;
 }
 
-export const CloseButtonContainer = styled.TouchableOpacity`
+export const BaseButton = styled.TouchableOpacity`
   background-color: ${(props: IContainerProps) =>
     props.theme.colors.CloseButtonBackgroundColor};
-  width: 100%;
-  height: 100%;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
 `;
 
-export const OpenButtonContainer = styled.TouchableOpacity`
-  background-color: ${(props: IContainerProps) =>
-    props.theme.colors.CloseButtonBackgroundColor};
+export const CloseButtonContainer = styled(BaseButton)`
+  width: 100%;
+  height: 100%;
+`;
+
+export const OpenButtonContainer = styled(BaseButton)`
   width: 80%;
   height: 90%;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  padding: 5px;
+`;
+
+export const AccountResetButtonContainer = styled(BaseButton)`
+  width: 80%;
+  height: 70%;
+`;
+
+export const NextTurnButtonContainer = styled(BaseButton)`
+  width: 80%;
+  height: 70%;
 `;

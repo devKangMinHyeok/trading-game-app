@@ -60,7 +60,7 @@ const rootStyles = StyleSheet.create({
 
   rootControlButton: {
     flex: 0.5,
-    backgroundColor: "blue",
+    backgroundColor: theme.colors.backgroundColor2,
     flexDirection: "row",
   },
 });

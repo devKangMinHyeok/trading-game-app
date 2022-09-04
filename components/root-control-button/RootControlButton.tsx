@@ -7,6 +7,11 @@ import {
   shortAccountState,
   turnNumberState,
 } from "../../atom";
+import {
+  AccountResetButtonContainer,
+  BaseButton,
+  NextTurnButtonContainer,
+} from "../../styles/buttonStyles";
 import rootStyles from "../../styles/rootStyles";
 
 function RootControlButton() {
@@ -28,38 +33,30 @@ function RootControlButton() {
 
   return (
     <View style={rootStyles.rootControlButton}>
-      <TouchableOpacity
-        onPress={resetButtonHandler}
-        style={
-          isCandleMoving
-            ? {
-                flex: 1,
-                backgroundColor: "red",
-                height: "100%",
-                opacity: 0.6,
-              }
-            : { flex: 1, backgroundColor: "red", height: "100%" }
-        }
-        disabled={isCandleMoving}
+      <View
+        style={{ flex: 1, justifyContent: "flex-start", alignItems: "center" }}
       >
-        <Text>계좌 초기화</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={nextTurnHandler}
-        style={
-          isCandleMoving
-            ? {
-                flex: 2,
-                backgroundColor: "skyblue",
-                height: "100%",
-                opacity: 0.6,
-              }
-            : { flex: 2, backgroundColor: "skyblue", height: "100%" }
-        }
-        disabled={isCandleMoving}
+        <AccountResetButtonContainer
+          onPress={resetButtonHandler}
+          disabled={isCandleMoving}
+        >
+          <Text>리셋</Text>
+        </AccountResetButtonContainer>
+      </View>
+      <View
+        style={{
+          flex: 3.5,
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
       >
-        <Text>Next Turn</Text>
-      </TouchableOpacity>
+        <NextTurnButtonContainer
+          onPress={nextTurnHandler}
+          disabled={isCandleMoving}
+        >
+          <Text>Next Turn</Text>
+        </NextTurnButtonContainer>
+      </View>
     </View>
   );
 }
