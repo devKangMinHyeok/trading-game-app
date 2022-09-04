@@ -233,6 +233,15 @@ function CandleChart() {
         />
 
         {/* 현재가 Line */}
+        <VictoryLabel
+          text={Math.ceil(lastClosePrice)}
+          datum={{
+            x: calDate(new Date(chartXDomain[1]), 1),
+            y: lastClosePrice + 5,
+          }}
+          textAnchor="end"
+          style={sharedLabelStyle}
+        />
         <VictoryLine
           domain={{
             x: chartXDomain,
