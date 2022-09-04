@@ -1,7 +1,7 @@
 {
   "files": {
-    "app.js": "/trading-game-app/static/js/app.c4292538.chunk.js",
-    "app.js.map": "/trading-game-app/static/js/app.c4292538.chunk.js.map",
+    "app.js": "/trading-game-app/static/js/app.bdf0e957.chunk.js",
+    "app.js.map": "/trading-game-app/static/js/app.bdf0e957.chunk.js.map",
     "runtime~app.js": "/trading-game-app/static/js/runtime~app.25d1b835.js",
     "runtime~app.js.map": "/trading-game-app/static/js/runtime~app.25d1b835.js.map",
     "static/js/2.bff44ebe.chunk.js": "/trading-game-app/static/js/2.bff44ebe.chunk.js",
@@ -17,6 +17,6 @@
   "entrypoints": [
     "static/js/runtime~app.25d1b835.js",
     "static/js/2.bff44ebe.chunk.js",
-    "static/js/app.c4292538.chunk.js"
+    "static/js/app.bdf0e957.chunk.js"
   ]
 }
