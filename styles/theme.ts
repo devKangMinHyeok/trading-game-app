@@ -51,7 +51,7 @@ const colors: IColors = {
 
   openPriceLineColor: "#ffc56e",
 
-  CloseButtonBackgroundColor: "#ffffff3b",
+  CloseButtonBackgroundColor: "#ffffff",
 };
 
 interface IFont {

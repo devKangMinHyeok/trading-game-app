@@ -122,4 +122,10 @@ export const PositionCloseButtonText = styled(BaseTextContainer)`
     props.isLong
       ? props.theme.colors.positiveTextColor
       : props.theme.colors.negativeTextColor};
+  font-weight: ${(props: ICloseButtonContainerProps) =>
+    props.theme.font.boldFontWeight};
+`;
+
+export const EmptyPositionText = styled(BaseTextContainer)`
+  font-weight: ${(props: IContainerProps) => props.theme.font.boldFontWeight};
 `;

@@ -1,5 +1,5 @@
-import { memo, useEffect, useState } from "react";
-import { View } from "react-native";
+import { memo, useCallback, useEffect, useState } from "react";
+import { LayoutChangeEvent, View } from "react-native";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import {
   cashAccountState,
@@ -11,8 +11,10 @@ import {
   shortAccountState,
   totalAccountState,
 } from "../../atom";
+import useComponentSize from "../../hooks/useComponentSize";
 import rootStyles from "../../styles/rootStyles";
 import CustomVictoryPie from "../assets/CustomVictoryPie";
+import CustomVictoryStack from "../assets/CustomVictoryStack";
 import EmptyPositionBox from "./EmptyPositionBox";
 import PositionInfoViewer from "./PositionInfoViewer";
 
@@ -27,12 +29,15 @@ function PositionInfo() {
   const totalAcount = useRecoilValue(totalAccountState);
   const lastClosePrice = useRecoilValue(lastClosePriceState);
 
-  const [pieCashRate, setPieCashRate] = useState(
+  const [barCashRate, setBarCashRate] = useState(
     totalAcount.cash / totalAcount.totalAsset
   );
-  const [pieFutureRate, setPieFutureRate] = useState(
+  const [barFutureRate, setBarFutureRate] = useState(
     totalAcount.futureValuation / totalAcount.totalAsset
   );
+
+  const [parentSize, setParentSize] = useState({ width: 0, height: 0 });
+  const { size, onLayout } = useComponentSize();
 
   const longCloseHandler = () => {
     if (!isCandleMoving) {
@@ -50,20 +55,22 @@ function PositionInfo() {
 
   useEffect(() => {
     if (!isCandleMoving) {
-      setPieCashRate(totalAcount.cash / totalAcount.totalAsset);
-      setPieFutureRate(totalAcount.futureValuation / totalAcount.totalAsset);
+      setBarCashRate(totalAcount.cash / totalAcount.totalAsset);
+      setBarFutureRate(totalAcount.futureValuation / totalAcount.totalAsset);
     }
   }, [isCandleMoving, totalAcount]);
 
   return (
     <View style={rootStyles.positionInfo}>
-      <View style={{ flex: 1 }}>
-        <CustomVictoryPie
-          pieCashRate={pieCashRate}
-          pieFutureRate={pieFutureRate}
+      <View style={{ flex: 1 }} onLayout={onLayout}>
+        <CustomVictoryStack
+          parentSize={size}
+          barCashRate={barCashRate}
+          barFutureRate={barFutureRate}
+          position={longAccountDetail.positionActive}
         />
       </View>
-      <View style={{ flex: 1.3 }}>
+      <View style={{ flex: 2.5 }}>
         {longAccountDetail.positionActive ? (
           <PositionInfoViewer
             accountDetail={longAccountDetail}

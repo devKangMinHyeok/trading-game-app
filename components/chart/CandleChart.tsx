@@ -45,6 +45,7 @@ import {
 } from "../../globalConstant";
 import { ICandleStick } from "../../interfaces/interface";
 import { sharedLabelStyle } from "../../styles/chartStyles";
+import { SCREEN_WIDTH } from "../../styles/rootStyles";
 import theme from "../../styles/theme";
 
 function CandleChart() {
@@ -178,13 +179,14 @@ function CandleChart() {
   return (
     <View>
       <VictoryChart
-        width={Dimensions.get("window").width}
+        width={SCREEN_WIDTH}
         domainPadding={{ x: DOMAIN_PADDING }}
         containerComponent={
           <VictoryCursorContainer
             cursorLabel={({ datum }) =>
               "     price :   " + `${round(datum.y, 1)}`
             }
+            style={{ fill: "white" }}
           />
         }
         style={{
