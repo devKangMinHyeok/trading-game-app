@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.2",
+    "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-community/slider": "4.2.3",
     "@types/lodash": "^4.14.182",
     "@types/react": "~18.0.0",

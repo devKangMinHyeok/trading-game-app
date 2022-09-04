@@ -1,13 +1,15 @@
 import { useCallback, useState } from "react";
 import { LayoutChangeEvent } from "react-native";
 
+export interface ISize {
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+}
+
 const useComponentSize = () => {
-  const [size, setSize] = useState<{
-    width: number;
-    height: number;
-    x: number;
-    y: number;
-  }>({
+  const [size, setSize] = useState<ISize>({
     width: 0,
     height: 0,
     x: 0,

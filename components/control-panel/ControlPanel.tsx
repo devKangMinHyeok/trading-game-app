@@ -7,14 +7,8 @@ import Trade from "./trade/Trade";
 function ControlPanel() {
   return (
     <View style={rootStyles.controlPanel}>
-      <ScrollView
-        pagingEnabled
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      >
-        <Trade />
-        <Shop />
-      </ScrollView>
+      <Shop />
+      <Trade />
     </View>
   );
 }

@@ -14,3 +14,14 @@ export const CloseButtonContainer = styled.TouchableOpacity`
   align-items: center;
   border-radius: 5px;
 `;
+
+export const OpenButtonContainer = styled.TouchableOpacity`
+  background-color: ${(props: IContainerProps) =>
+    props.theme.colors.CloseButtonBackgroundColor};
+  width: 80%;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 5px;
+`;

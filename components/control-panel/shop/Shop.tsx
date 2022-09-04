@@ -1,10 +1,11 @@
 import { Text, View } from "react-native";
 import rootStyles from "../../../styles/rootStyles";
+import { BaseTextContainer } from "../../../styles/TextStyledComponents";
 
 function Shop() {
   return (
     <View style={rootStyles.shop}>
-      <Text>Shop</Text>
+      <BaseTextContainer>Shop</BaseTextContainer>
     </View>
   );
 }

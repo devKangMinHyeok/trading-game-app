@@ -1,5 +1,7 @@
 import { memo } from "react";
 import { Text, TouchableOpacity } from "react-native";
+import { OpenButtonContainer } from "../../../../../styles/buttonStyles";
+import { OpenButtonText } from "../../../../../styles/TextStyledComponents";
 
 interface TradeButtonProps {
   isCandleMoving: boolean;
@@ -13,17 +15,11 @@ function TradeButton({
   isBuy,
 }: TradeButtonProps) {
   return (
-    <TouchableOpacity
-      style={{
-        backgroundColor: "green",
-        height: "100%",
-        opacity: isCandleMoving ? 0.5 : 1,
-      }}
-      onPress={buttonHandler}
-      disabled={isCandleMoving}
-    >
-      <Text>{isBuy ? "BUY" : "Sell"}</Text>
-    </TouchableOpacity>
+    <OpenButtonContainer onPress={buttonHandler} disabled={isCandleMoving}>
+      <OpenButtonText isLong={isBuy}>
+        {isBuy ? "BUY / 롱" : "Sell / 숏"}
+      </OpenButtonText>
+    </OpenButtonContainer>
   );
 }
 

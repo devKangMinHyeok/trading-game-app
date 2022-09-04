@@ -1,6 +1,7 @@
 interface IColors {
   backgroundColor1: string;
   backgroundColor2: string;
+  backgroundColor3: string;
 
   baseTextColor: string;
   toneDownTextColor: string;
@@ -29,6 +30,7 @@ interface IColors {
 const colors: IColors = {
   backgroundColor1: "#161A1E",
   backgroundColor2: "#1e2227ff",
+  backgroundColor3: "#303030ff",
 
   baseTextColor: "#FFFFFF",
   toneDownTextColor: "#bebebe",

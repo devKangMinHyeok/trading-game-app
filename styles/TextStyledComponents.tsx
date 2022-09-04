@@ -129,3 +129,29 @@ export const PositionCloseButtonText = styled(BaseTextContainer)`
 export const EmptyPositionText = styled(BaseTextContainer)`
   font-weight: ${(props: IContainerProps) => props.theme.font.boldFontWeight};
 `;
+
+// Controll Panel
+export const ControlSectionTitleText = styled(BaseTextContainer)`
+  font-size: ${(props: IContainerProps) => props.theme.font.smallTextFontSize};
+  color: ${(props: IContainerProps) => props.theme.colors.toneDownTextColor};
+`;
+export const ControlSectionValueText = styled(BaseTextContainer)`
+  font-size: ${(props: IContainerProps) =>
+    props.theme.font.midiumValueFontSize};
+`;
+
+export const LiquidControlSectionValueText = styled(ControlSectionValueText)`
+  color: ${(props: IInfoContainerProps) =>
+    props.isLong
+      ? props.theme.colors.longLiquidActiveLineColor
+      : props.theme.colors.shortLiquidActiveLineColor};
+`;
+
+export const OpenButtonText = styled(BaseTextContainer)`
+  color: ${(props: ICloseButtonContainerProps) =>
+    props.isLong
+      ? props.theme.colors.positiveTextColor
+      : props.theme.colors.negativeTextColor};
+  font-weight: ${(props: ICloseButtonContainerProps) =>
+    props.theme.font.boldFontWeight};
+`;

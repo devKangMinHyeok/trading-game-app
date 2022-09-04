@@ -10,27 +10,52 @@ import {
 const switchStyle = (
   disabled?: boolean,
   selectedValue?: number | boolean,
+  selectedColor?: string,
+  nonSelectedColor?: string,
   thisValue?: number | boolean
-) =>
-  StyleSheet.create({
+) => {
+  return StyleSheet.create({
     container: {
-      backgroundColor: "whitesmoke",
-      width: "80%",
+      backgroundColor: "transparent",
+      width: "100%",
+      height: "100%",
       flexDirection: "row",
       opacity: disabled ? 0.5 : 1,
     },
     box: {
       flex: 1,
       padding: 5,
-      backgroundColor: selectedValue === thisValue ? "red" : "skyblue",
+      backgroundColor: "transprent",
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor:
+        selectedValue === thisValue ? selectedColor : nonSelectedColor,
+      alignItems: "center",
     },
   });
+};
+
+const textStyle = (
+  disabled?: boolean,
+  selectedValue?: number | boolean,
+  selectedColor?: string,
+  nonSelectedColor?: string,
+  thisValue?: number | boolean
+) => {
+  return StyleSheet.create({
+    text: {
+      color: selectedValue === thisValue ? selectedColor : nonSelectedColor,
+    },
+  });
+};
 
 export interface CustomToggleSwitchProps {
   options: { label: string; value: number | boolean }[];
   value: number | boolean;
   setValueFunction: React.Dispatch<React.SetStateAction<number | boolean>>;
   disabled?: boolean;
+  selectedColor?: string;
+  nonSelectedColor?: string;
 }
 
 function CustomToggleSwitch({
@@ -38,6 +63,8 @@ function CustomToggleSwitch({
   value,
   setValueFunction,
   disabled,
+  selectedColor = "#32D993",
+  nonSelectedColor = "#bebebe",
 }: CustomToggleSwitchProps) {
   const onPressHandler = (
     evt: GestureResponderEvent,
@@ -51,10 +78,30 @@ function CustomToggleSwitch({
         <TouchableOpacity
           key={index}
           onPress={(evt) => onPressHandler(evt, ele.value)}
-          style={switchStyle(disabled, value, ele.value).box}
+          style={
+            switchStyle(
+              disabled,
+              value,
+              selectedColor,
+              nonSelectedColor,
+              ele.value
+            ).box
+          }
           disabled={disabled}
         >
-          <Text>{ele.label}</Text>
+          <Text
+            style={
+              textStyle(
+                disabled,
+                value,
+                selectedColor,
+                nonSelectedColor,
+                ele.value
+              ).text
+            }
+          >
+            {ele.label}
+          </Text>
         </TouchableOpacity>
       ))}
     </View>

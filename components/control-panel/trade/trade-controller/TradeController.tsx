@@ -15,6 +15,7 @@ import {
   shortLiquidState,
 } from "../../../../atom";
 import { TRANSACTION_FEE_RATE } from "../../../../globalConstant";
+import useComponentSize from "../../../../hooks/useComponentSize";
 import AmountSettingBox from "./components/AmountSettingBox";
 
 import LeverageControlBox from "./components/LeverageControlBox";
@@ -46,6 +47,8 @@ function TradeController({
   const [amountRate, setAmountRate] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [coinAmount, setCoinAmount] = useState(0);
+
+  const { size, onLayout } = useComponentSize();
 
   const buyButtonHandler = useCallback(() => {
     if (isLongSelected) {
@@ -190,33 +193,47 @@ function TradeController({
   }, [isCandleMoving]);
 
   return (
-    <View>
-      <LeverageControlBox
-        activeLeverage={activeLeverage}
-        leverage={leverage}
-        setLeverage={setLeverage}
-        disabled={disabled}
-      />
-      <AmountSettingBox amountRate={amountRate} setAmountRate={setAmountRate} />
-      <TotalPriceBox totalPrice={totalPrice} coinAmount={coinAmount} />
-      <LiquidPriceBox
-        isLongSelected={isLongSelected}
-        longLiquid={longLiquid}
-        shortLiquid={shortLiquid}
-      />
-      {isLongSelected ? (
-        <TradeButton
-          isCandleMoving={isCandleMoving}
-          buttonHandler={buyButtonHandler}
-          isBuy={true}
+    <View style={{ height: "100%", width: "100%" }} onLayout={onLayout}>
+      <View style={{ flex: 1 }}>
+        <LeverageControlBox
+          isLongSelected={isLongSelected}
+          activeLeverage={activeLeverage}
+          leverage={leverage}
+          setLeverage={setLeverage}
+          disabled={disabled}
         />
-      ) : (
-        <TradeButton
-          isCandleMoving={isCandleMoving}
-          buttonHandler={sellButtonHandler}
-          isBuy={false}
+      </View>
+      <View style={{ flex: 1 }}>
+        <AmountSettingBox
+          parentSize={size}
+          isLongSelected={isLongSelected}
+          amountRate={amountRate}
+          setAmountRate={setAmountRate}
         />
-      )}
+      </View>
+      <View style={{ flex: 2, flexDirection: "row" }}>
+        <TotalPriceBox totalPrice={totalPrice} coinAmount={coinAmount} />
+        <LiquidPriceBox
+          isLongSelected={isLongSelected}
+          longLiquid={longLiquid}
+          shortLiquid={shortLiquid}
+        />
+      </View>
+      <View style={{ flex: 1, alignItems: "center" }}>
+        {isLongSelected ? (
+          <TradeButton
+            isCandleMoving={isCandleMoving}
+            buttonHandler={buyButtonHandler}
+            isBuy={true}
+          />
+        ) : (
+          <TradeButton
+            isCandleMoving={isCandleMoving}
+            buttonHandler={sellButtonHandler}
+            isBuy={false}
+          />
+        )}
+      </View>
     </View>
   );
 }

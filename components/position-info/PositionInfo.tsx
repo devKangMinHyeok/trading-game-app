@@ -1,10 +1,9 @@
-import { memo, useCallback, useEffect, useState } from "react";
-import { LayoutChangeEvent, View } from "react-native";
+import { memo, useEffect, useState } from "react";
+import { View } from "react-native";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import {
   cashAccountState,
   isCandleMovingState,
-  lastClosePriceState,
   longAccountDetailState,
   longAccountState,
   shortAccountDetailState,
@@ -13,7 +12,6 @@ import {
 } from "../../atom";
 import useComponentSize from "../../hooks/useComponentSize";
 import rootStyles from "../../styles/rootStyles";
-import CustomVictoryPie from "../assets/CustomVictoryPie";
 import CustomVictoryStack from "../assets/CustomVictoryStack";
 import EmptyPositionBox from "./EmptyPositionBox";
 import PositionInfoViewer from "./PositionInfoViewer";
@@ -27,7 +25,6 @@ function PositionInfo() {
   const shortAccountDetail = useRecoilValue(shortAccountDetailState);
   const resetShortAccount = useResetRecoilState(shortAccountState);
   const totalAcount = useRecoilValue(totalAccountState);
-  const lastClosePrice = useRecoilValue(lastClosePriceState);
 
   const [barCashRate, setBarCashRate] = useState(
     totalAcount.cash / totalAcount.totalAsset
@@ -36,7 +33,6 @@ function PositionInfo() {
     totalAcount.futureValuation / totalAcount.totalAsset
   );
 
-  const [parentSize, setParentSize] = useState({ width: 0, height: 0 });
   const { size, onLayout } = useComponentSize();
 
   const longCloseHandler = () => {

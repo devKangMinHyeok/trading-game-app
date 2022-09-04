@@ -1,6 +1,11 @@
 import { memo } from "react";
 import { Text, View } from "react-native";
 import convertKrNumberType from "../../../../../functions/convertKrNumberType";
+import {
+  ControlSectionTitleText,
+  ControlSectionValueText,
+  LiquidControlSectionValueText,
+} from "../../../../../styles/TextStyledComponents";
 
 interface LiquidPriceBoxProps {
   isLongSelected: boolean;
@@ -14,13 +19,13 @@ function LiquidPriceBox({
   shortLiquid,
 }: LiquidPriceBoxProps) {
   return (
-    <View>
-      <Text>
-        청산가 :{" "}
+    <View style={{ flex: 1 }}>
+      <ControlSectionTitleText>청산가</ControlSectionTitleText>
+      <LiquidControlSectionValueText isLong={isLongSelected}>
         {isLongSelected
           ? convertKrNumberType(Math.ceil(longLiquid))
           : convertKrNumberType(Math.ceil(shortLiquid))}
-      </Text>
+      </LiquidControlSectionValueText>
     </View>
   );
 }

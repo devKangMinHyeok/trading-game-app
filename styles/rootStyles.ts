@@ -43,17 +43,19 @@ const rootStyles = StyleSheet.create({
   controlPanel: {
     flex: 1.7,
     backgroundColor: "pink",
+    flexDirection: "row",
   },
 
   trade: {
-    width: SCREEN_WIDTH * 0.95,
+    flex: 7.5,
     backgroundColor: "grey",
   },
 
   shop: {
-    width: SCREEN_WIDTH * 0.95,
+    flex: 2.5,
     justifyContent: "center",
-    backgroundColor: "purple",
+    alignItems: "center",
+    backgroundColor: theme.colors.backgroundColor1,
   },
 
   rootControlButton: {
