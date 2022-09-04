@@ -30,7 +30,7 @@ function Trade() {
           nonSelectedColor={theme.colors.toneDownTextColor}
         />
       </View>
-      <View style={{ flex: 7, backgroundColor: theme.colors.backgroundColor1 }}>
+      <View style={{ flex: 6, backgroundColor: theme.colors.backgroundColor1 }}>
         {isLongSelected ? <LongTradeController /> : <ShortTradeController />}
       </View>
     </View>

@@ -13,7 +13,7 @@ interface TotalPriceBoxProps {
 
 function TotalPriceBox({ totalPrice, coinAmount }: TotalPriceBoxProps) {
   return (
-    <View style={{ flex: 2 }}>
+    <View style={{ flexDirection: "row", marginTop: 5 }}>
       <View style={{ flex: 1 }}>
         <ControlSectionTitleText>주문총액</ControlSectionTitleText>
         <ControlSectionValueText>

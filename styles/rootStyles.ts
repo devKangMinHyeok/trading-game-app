@@ -11,7 +11,7 @@ const rootStyles = StyleSheet.create({
 
   topAccount: {
     flexDirection: "row",
-    flex: 0.5,
+    flex: 0.6,
     gap: 5,
     justifyContent: "center",
     alignItems: "flex-end",
@@ -19,14 +19,14 @@ const rootStyles = StyleSheet.create({
   },
 
   chart: {
-    flex: 1.6,
+    flex: 1.7,
     justifyContent: "center",
     overflow: "hidden",
     backgroundColor: theme.colors.backgroundColor1,
   },
 
   middleAccount: {
-    flex: 0.3,
+    flex: 0.4,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
@@ -41,7 +41,7 @@ const rootStyles = StyleSheet.create({
   },
 
   controlPanel: {
-    flex: 1.6,
+    flex: 1.4,
     backgroundColor: "pink",
     flexDirection: "row",
   },
@@ -52,14 +52,14 @@ const rootStyles = StyleSheet.create({
   },
 
   shop: {
-    flex: 2.5,
+    flex: 1.5,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: theme.colors.backgroundColor1,
   },
 
   rootControlButton: {
-    flex: 1,
+    flex: 1.1,
     backgroundColor: theme.colors.backgroundColor2,
     flexDirection: "row",
   },

@@ -6,6 +6,7 @@ function Shop() {
   return (
     <View style={rootStyles.shop}>
       <BaseTextContainer>Shop</BaseTextContainer>
+      <BaseTextContainer>(준비중)</BaseTextContainer>
     </View>
   );
 }

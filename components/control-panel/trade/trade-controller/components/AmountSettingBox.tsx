@@ -25,39 +25,37 @@ function AmountSettingBox({
     setAmountRate(value[0]);
   };
   return (
-    <View>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
+    <View
+      style={{
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-around",
+      }}
+    >
+      <MultiSlider
+        sliderLength={parentSize.width * 0.8 || 200}
+        values={[amountRate]}
+        onValuesChange={amountRateHandler}
+        min={0}
+        max={101}
+        step={5}
+        snapped={true}
+        markerStyle={{
+          width: 18,
+          height: 18,
+          backgroundColor: isLongSelected
+            ? theme.colors.longButtonColor
+            : theme.colors.shortButtonColor,
         }}
-      >
-        <MultiSlider
-          sliderLength={parentSize.width * 0.8 || 200}
-          values={[amountRate]}
-          onValuesChange={amountRateHandler}
-          min={0}
-          max={101}
-          step={5}
-          snapped={false}
-          markerStyle={{
-            width: 20,
-            height: 20,
-            backgroundColor: isLongSelected
-              ? theme.colors.longButtonColor
-              : theme.colors.shortButtonColor,
-          }}
-          selectedStyle={{
-            backgroundColor: isLongSelected
-              ? theme.colors.longButtonColor
-              : theme.colors.shortButtonColor,
-          }}
-          trackStyle={{ backgroundColor: theme.colors.toneDownTextColor }}
-        />
+        selectedStyle={{
+          backgroundColor: isLongSelected
+            ? theme.colors.longButtonColor
+            : theme.colors.shortButtonColor,
+        }}
+        trackStyle={{ backgroundColor: theme.colors.toneDownTextColor }}
+      />
 
-        <ControlSectionTitleText> {amountRate}%</ControlSectionTitleText>
-      </View>
+      <ControlSectionTitleText> {amountRate}%</ControlSectionTitleText>
     </View>
   );
 }

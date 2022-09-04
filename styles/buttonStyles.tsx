@@ -35,12 +35,12 @@ export const AccountResetButtonContainer = styled(BaseButton)`
   background-color: ${(props: IContainerProps) =>
     props.theme.colors.resetButtonBackgroundColor};
   width: 80%;
-  height: 50%;
+  height: 40%;
 `;
 
 export const NextTurnButtonContainer = styled(BaseButton)`
   background-color: ${(props: IContainerProps) =>
     props.theme.colors.nextTurnButtonBackgroundColor};
   width: 80%;
-  height: 50%;
+  height: 40%;
 `;

@@ -194,7 +194,7 @@ function TradeController({
 
   return (
     <View style={{ height: "100%", width: "100%" }} onLayout={onLayout}>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 0.8 }}>
         <LeverageControlBox
           isLongSelected={isLongSelected}
           activeLeverage={activeLeverage}
@@ -203,7 +203,8 @@ function TradeController({
           disabled={disabled}
         />
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1.5, justifyContent: "space-around", padding: 3 }}>
+        <TotalPriceBox totalPrice={totalPrice} coinAmount={coinAmount} />
         <AmountSettingBox
           parentSize={size}
           isLongSelected={isLongSelected}
@@ -211,28 +212,29 @@ function TradeController({
           setAmountRate={setAmountRate}
         />
       </View>
-      <View style={{ flex: 2, flexDirection: "row" }}>
-        <TotalPriceBox totalPrice={totalPrice} coinAmount={coinAmount} />
-        <LiquidPriceBox
-          isLongSelected={isLongSelected}
-          longLiquid={longLiquid}
-          shortLiquid={shortLiquid}
-        />
-      </View>
-      <View style={{ flex: 1, alignItems: "center" }}>
-        {isLongSelected ? (
-          <TradeButton
-            isCandleMoving={isCandleMoving}
-            buttonHandler={buyButtonHandler}
-            isBuy={true}
+      <View style={{ flex: 1, flexDirection: "row" }}>
+        <View style={{ flex: 1 }}>
+          <LiquidPriceBox
+            isLongSelected={isLongSelected}
+            longLiquid={longLiquid}
+            shortLiquid={shortLiquid}
           />
-        ) : (
-          <TradeButton
-            isCandleMoving={isCandleMoving}
-            buttonHandler={sellButtonHandler}
-            isBuy={false}
-          />
-        )}
+        </View>
+        <View style={{ flex: 3, alignItems: "center" }}>
+          {isLongSelected ? (
+            <TradeButton
+              isCandleMoving={isCandleMoving}
+              buttonHandler={buyButtonHandler}
+              isBuy={true}
+            />
+          ) : (
+            <TradeButton
+              isCandleMoving={isCandleMoving}
+              buttonHandler={sellButtonHandler}
+              isBuy={false}
+            />
+          )}
+        </View>
       </View>
     </View>
   );
