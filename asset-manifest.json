@@ -1,22 +1,22 @@
 {
   "files": {
-    "app.js": "/trading-game-app/static/js/app.060bcb4b.chunk.js",
-    "app.js.map": "/trading-game-app/static/js/app.060bcb4b.chunk.js.map",
+    "app.js": "/trading-game-app/static/js/app.c4292538.chunk.js",
+    "app.js.map": "/trading-game-app/static/js/app.c4292538.chunk.js.map",
     "runtime~app.js": "/trading-game-app/static/js/runtime~app.25d1b835.js",
     "runtime~app.js.map": "/trading-game-app/static/js/runtime~app.25d1b835.js.map",
-    "static/js/2.572411e0.chunk.js": "/trading-game-app/static/js/2.572411e0.chunk.js",
-    "static/js/2.572411e0.chunk.js.map": "/trading-game-app/static/js/2.572411e0.chunk.js.map",
+    "static/js/2.bff44ebe.chunk.js": "/trading-game-app/static/js/2.bff44ebe.chunk.js",
+    "static/js/2.bff44ebe.chunk.js.map": "/trading-game-app/static/js/2.bff44ebe.chunk.js.map",
     "favicon-16.png": "/trading-game-app/favicon-16.png",
     "favicon-32.png": "/trading-game-app/favicon-32.png",
     "favicon.ico": "/trading-game-app/favicon.ico",
     "index.html": "/trading-game-app/index.html",
     "manifest.json": "/trading-game-app/manifest.json",
     "serve.json": "/trading-game-app/serve.json",
-    "static/js/2.572411e0.chunk.js.LICENSE.txt": "/trading-game-app/static/js/2.572411e0.chunk.js.LICENSE.txt"
+    "static/js/2.bff44ebe.chunk.js.LICENSE.txt": "/trading-game-app/static/js/2.bff44ebe.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime~app.25d1b835.js",
-    "static/js/2.572411e0.chunk.js",
-    "static/js/app.060bcb4b.chunk.js"
+    "static/js/2.bff44ebe.chunk.js",
+    "static/js/app.c4292538.chunk.js"
   ]
 }
