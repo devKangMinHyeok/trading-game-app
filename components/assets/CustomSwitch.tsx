@@ -31,6 +31,7 @@ const switchStyle = (
       borderColor:
         selectedValue === thisValue ? selectedColor : nonSelectedColor,
       alignItems: "center",
+      justifyContent: "center",
     },
   });
 };
