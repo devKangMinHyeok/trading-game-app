@@ -118,10 +118,11 @@ export const UnrealizedPnlBoxValue = styled(PositionInfoValueBoxText)`
 `;
 
 export const PositionCloseButtonText = styled(BaseTextContainer)`
-  color: ${(props: ICloseButtonContainerProps) =>
+  /* color: ${(props: ICloseButtonContainerProps) =>
     props.isLong
       ? props.theme.colors.positiveTextColor
-      : props.theme.colors.negativeTextColor};
+      : props.theme.colors.negativeTextColor}; */
+  color: "black";
   font-weight: ${(props: ICloseButtonContainerProps) =>
     props.theme.font.boldFontWeight};
 `;

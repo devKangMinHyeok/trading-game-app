@@ -18,6 +18,8 @@ export const BaseButton = styled.TouchableOpacity`
 `;
 
 export const CloseButtonContainer = styled(BaseButton)`
+  background-color: ${(props: IContainerProps) =>
+    props.theme.colors.CloseButtonBackgroundColor2};
   width: 100%;
   height: 100%;
 `;

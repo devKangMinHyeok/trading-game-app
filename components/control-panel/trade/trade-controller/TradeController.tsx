@@ -194,7 +194,7 @@ function TradeController({
 
   return (
     <View style={{ height: "100%", width: "100%" }} onLayout={onLayout}>
-      <View style={{ flex: 0.8 }}>
+      <View style={{ flex: 1.2 }}>
         <LeverageControlBox
           isLongSelected={isLongSelected}
           activeLeverage={activeLeverage}
@@ -203,16 +203,17 @@ function TradeController({
           disabled={disabled}
         />
       </View>
-      <View style={{ flex: 1.5, justifyContent: "space-around", padding: 3 }}>
-        <TotalPriceBox totalPrice={totalPrice} coinAmount={coinAmount} />
-        <AmountSettingBox
-          parentSize={size}
-          isLongSelected={isLongSelected}
-          amountRate={amountRate}
-          setAmountRate={setAmountRate}
-        />
-      </View>
-      <View style={{ flex: 1, flexDirection: "row" }}>
+      <View
+        style={{
+          flex: 1.5,
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <View style={{ flex: 2.5 }}>
+          <TotalPriceBox totalPrice={totalPrice} coinAmount={coinAmount} />
+        </View>
         <View style={{ flex: 1 }}>
           <LiquidPriceBox
             isLongSelected={isLongSelected}
@@ -220,6 +221,16 @@ function TradeController({
             shortLiquid={shortLiquid}
           />
         </View>
+      </View>
+      <View style={{ flex: 1.5 }}>
+        <AmountSettingBox
+          parentSize={size}
+          isLongSelected={isLongSelected}
+          amountRate={amountRate}
+          setAmountRate={setAmountRate}
+        />
+      </View>
+      <View style={{ flex: 1.5, flexDirection: "row" }}>
         <View style={{ flex: 3, alignItems: "center" }}>
           {isLongSelected ? (
             <TradeButton

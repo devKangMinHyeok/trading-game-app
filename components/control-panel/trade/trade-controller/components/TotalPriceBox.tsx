@@ -14,18 +14,18 @@ interface TotalPriceBoxProps {
 function TotalPriceBox({ totalPrice, coinAmount }: TotalPriceBoxProps) {
   return (
     <View style={{ flexDirection: "row", marginTop: 5 }}>
-      <View style={{ flex: 1 }}>
-        <ControlSectionTitleText>주문총액</ControlSectionTitleText>
+      <View style={{ flex: 1, flexDirection: "row" }}>
+        <ControlSectionTitleText>주문총액 | </ControlSectionTitleText>
         <ControlSectionValueText>
           {convertKrNumberType(Math.ceil(totalPrice))}원
         </ControlSectionValueText>
       </View>
-      <View style={{ flex: 1 }}>
+      {/* <View style={{ flex: 1 }}>
         <ControlSectionTitleText>개수</ControlSectionTitleText>
         <ControlSectionValueText>
           {convertKrNumberType(coinAmount)}
         </ControlSectionValueText>
-      </View>
+      </View> */}
     </View>
   );
 }

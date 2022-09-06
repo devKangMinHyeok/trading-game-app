@@ -19,8 +19,15 @@ function LiquidPriceBox({
   shortLiquid,
 }: LiquidPriceBoxProps) {
   return (
-    <View style={{ flex: 1 }}>
-      <ControlSectionTitleText>청산가</ControlSectionTitleText>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "center",
+        marginTop: 5,
+      }}
+    >
+      <ControlSectionTitleText>청산가 </ControlSectionTitleText>
       <LiquidControlSectionValueText isLong={isLongSelected}>
         {isLongSelected
           ? convertKrNumberType(Math.ceil(longLiquid))
