@@ -56,10 +56,10 @@ function TradeController({
   const buyButtonHandler = useCallback(() => {
     if (isLongSelected) {
       if (!isCandleMoving) {
-        setCashAccount((prev) => prev - totalPrice);
         if (shortAccountDetail.positionActive) {
           alert("Long 포지션과 Short 포지션을 동시에 보유할 수 없습니다.");
         } else if (!longAccountDetail.positionActive && coinAmount > 0) {
+          setCashAccount((prev) => prev - totalPrice);
           const newLongAccount = {
             positionActive: true,
             openPrice: lastClosePrice,
@@ -71,6 +71,7 @@ function TradeController({
           };
           setLongAccount(newLongAccount);
         } else if (longAccountDetail.positionActive && coinAmount > 0) {
+          setCashAccount((prev) => prev - totalPrice);
           setLongAccount((prev) => {
             const newLog = cloneDeep(prev);
             const newOpenPositionValue = lastClosePrice * coinAmount;
@@ -107,10 +108,10 @@ function TradeController({
   const sellButtonHandler = useCallback(() => {
     if (!isLongSelected) {
       if (!isCandleMoving) {
-        setCashAccount((prev) => prev - totalPrice);
         if (longAccountDetail.positionActive) {
           alert("Long 포지션과 Short 포지션을 동시에 보유할 수 없습니다.");
         } else if (!shortAccountDetail.positionActive && coinAmount > 0) {
+          setCashAccount((prev) => prev - totalPrice);
           const newShortAccount = {
             positionActive: true,
             openPrice: lastClosePrice,
@@ -122,6 +123,7 @@ function TradeController({
           };
           setShortAccount(newShortAccount);
         } else if (shortAccountDetail.positionActive && coinAmount > 0) {
+          setCashAccount((prev) => prev - totalPrice);
           setShortAccount((prev) => {
             const newLog = cloneDeep(prev);
             const newOpenPositionValue = lastClosePrice * coinAmount;
