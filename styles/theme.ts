@@ -22,7 +22,11 @@ interface IColors {
   shortLiquidActiveLineColor: string;
   shortLiquidInactiveLineColor: string;
 
+  crossHairLineColor: string;
+
   openPriceLineColor: string;
+
+  LevelUpButtonBackgroundColor: string;
 
   CloseButtonBackgroundColor: string;
   CloseButtonBackgroundColor2: string;
@@ -55,7 +59,11 @@ const colors: IColors = {
   shortLiquidActiveLineColor: "#ee32ff",
   shortLiquidInactiveLineColor: "#ee32ff8c",
 
+  crossHairLineColor: "#FFFFFF",
+
   openPriceLineColor: "#ffc56e",
+
+  LevelUpButtonBackgroundColor: "#00b052",
 
   CloseButtonBackgroundColor: "#ffffff",
   CloseButtonBackgroundColor2: "#f2b71c",

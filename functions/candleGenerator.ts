@@ -6,7 +6,8 @@ const candleGenerator = (
   time: Date,
   lastClosePrice: number,
   numberPerUnit: number,
-  random_gap: number = 0.05
+  random_gap: number = 0.05,
+  stddev: number = 1
 ) => {
   let previousCandle: ICandleStick = {
     x: time,
@@ -19,11 +20,11 @@ const candleGenerator = (
 
   for (let i = 0; i < numberPerUnit; i++) {
     const newCandle = cloneDeep(previousCandle);
-
     // const newClose =
     //   newCandle.close * random(1 - random_gap, 1 + random_gap, true);
     const newClose =
-      newCandle.close * getRandomRate(1, 1, 1 - random_gap, 1 + random_gap);
+      newCandle.close *
+      getRandomRate(1, stddev, 1 - random_gap, 1 + random_gap);
     const newHigh = newCandle.high < newClose ? newClose : newCandle.high;
     const newLow = newCandle.low > newClose ? newClose : newCandle.low;
 

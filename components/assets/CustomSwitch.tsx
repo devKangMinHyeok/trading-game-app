@@ -24,7 +24,6 @@ const switchStyle = (
     },
     box: {
       flex: 1,
-      padding: 5,
       backgroundColor: "transprent",
       borderWidth: 1,
       borderStyle: "solid",

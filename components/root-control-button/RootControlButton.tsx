@@ -3,6 +3,7 @@ import { useRecoilState, useResetRecoilState } from "recoil";
 import {
   cashAccountState,
   isCandleMovingState,
+  levelNumberState,
   longAccountState,
   shortAccountState,
   turnNumberState,
@@ -23,6 +24,7 @@ function RootControlButton() {
   const resetCashAccount = useResetRecoilState(cashAccountState);
   const resetLongAccount = useResetRecoilState(longAccountState);
   const resetShortAccount = useResetRecoilState(shortAccountState);
+  const resetLevelNumber = useResetRecoilState(levelNumberState);
   const [isCandleMoving, setIsCandleMoving] =
     useRecoilState(isCandleMovingState);
   const nextTurnHandler = () => {
@@ -33,6 +35,7 @@ function RootControlButton() {
     resetCashAccount();
     resetLongAccount();
     resetShortAccount();
+    resetLevelNumber();
   };
 
   return (

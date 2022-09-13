@@ -1,24 +1,24 @@
 import { memo } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import convertKrNumberType from "../../../../../functions/convertKrNumberType";
 import {
   ControlSectionTitleText,
   ControlSectionValueText,
 } from "../../../../../styles/TextStyledComponents";
 
-interface TotalPriceBoxProps {
-  totalPrice: number;
+interface CoinAmountBoxProps {
+  coinAmount: number;
 }
 
-function TotalPriceBox({ totalPrice }: TotalPriceBoxProps) {
+function CoinAmountBox({ coinAmount }: CoinAmountBoxProps) {
   return (
     <View style={{ flexDirection: "row", alignItems: "center" }}>
-      <ControlSectionTitleText>주문총액 | </ControlSectionTitleText>
+      <ControlSectionTitleText>개수 | </ControlSectionTitleText>
       <ControlSectionValueText>
-        {convertKrNumberType(Math.ceil(totalPrice))}원
+        {convertKrNumberType(coinAmount)}
       </ControlSectionValueText>
     </View>
   );
 }
 
-export default memo(TotalPriceBox);
+export default memo(CoinAmountBox);

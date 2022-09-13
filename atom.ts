@@ -6,6 +6,7 @@ import {
   LAST_OF_INITIAL_CANDLE_HIGH,
   LAST_OF_INITIAL_CANDLE_LOW,
   LAST_OF_INITIAL_CANDLE_OPEN,
+  LEVEL_SETTING,
   NEGATIVE,
   POSITIVE,
   ZERO,
@@ -13,6 +14,7 @@ import {
 import {
   IFutureAccount,
   IFutureAccountDetail,
+  ILevelInfo,
   ITotalAccount,
   ITotalFutureAccount,
 } from "./interfaces/interface";
@@ -74,6 +76,19 @@ export const shortLiquidState = atom({
 export const cashAccountState = atom({
   key: "accountState",
   default: 1000000,
+});
+
+export const levelNumberState = atom({
+  key: "levelNumberState",
+  default: 1,
+});
+
+export const levelInfoState = selector({
+  key: "levelInfoState",
+  get: ({ get }) => {
+    const levelNumber = get(levelNumberState);
+    return LEVEL_SETTING[levelNumber - 1];
+  },
 });
 
 export const longAccountState = atom({

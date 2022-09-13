@@ -18,6 +18,14 @@ const rootStyles = StyleSheet.create({
     backgroundColor: theme.colors.backgroundColor1,
   },
 
+  level: {
+    flex: 0.25,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: theme.colors.backgroundColor1,
+  },
+
   chart: {
     flex: 1.6,
     justifyContent: "center",
@@ -41,7 +49,7 @@ const rootStyles = StyleSheet.create({
   },
 
   controlPanel: {
-    flex: 1.6,
+    flex: 1.4,
     backgroundColor: "pink",
     flexDirection: "row",
   },
@@ -59,7 +67,7 @@ const rootStyles = StyleSheet.create({
   },
 
   rootControlButton: {
-    flex: 0.9,
+    flex: 0.6,
     backgroundColor: theme.colors.backgroundColor2,
     flexDirection: "row",
   },

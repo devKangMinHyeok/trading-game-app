@@ -6,12 +6,14 @@ import Chart from "./chart/Chart";
 import PositionInfo from "./position-info/PositionInfo";
 import ControlPanel from "./control-panel/ControlPanel";
 import RootControlButton from "./root-control-button/RootControlButton";
+import LevelInfoBox from "./level/LevelInfoBox";
 
 function Display() {
   return (
     <>
       <View style={rootStyles.display}>
         <TopAccount />
+        <LevelInfoBox />
         <Chart />
         <MiddleAccount />
         <PositionInfo />

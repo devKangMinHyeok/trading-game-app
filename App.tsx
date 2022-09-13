@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components/native";
 import Display from "./components/Display";
@@ -8,6 +9,7 @@ export default function App() {
     <RecoilRoot>
       <ThemeProvider theme={theme}>
         <Display />
+        <StatusBar style="light" />
       </ThemeProvider>
     </RecoilRoot>
   );

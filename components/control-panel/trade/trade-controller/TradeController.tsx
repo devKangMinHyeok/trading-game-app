@@ -7,6 +7,7 @@ import {
   isCandleMovingState,
   isLongControllerActiveState,
   lastClosePriceState,
+  levelInfoState,
   longAccountDetailState,
   longAccountState,
   longLiquidState,
@@ -14,14 +15,15 @@ import {
   shortAccountState,
   shortLiquidState,
 } from "../../../../atom";
-import { TRANSACTION_FEE_RATE } from "../../../../globalConstant";
 import useComponentSize from "../../../../hooks/useComponentSize";
 import AmountSettingBox from "./components/AmountSettingBox";
+import CoinAmountBox from "./components/CoinAmountBox";
 
 import LeverageControlBox from "./components/LeverageControlBox";
 import LiquidPriceBox from "./components/LiquidPriceBox";
 import TotalPriceBox from "./components/TotalPriceBox";
 import TradeButton from "./components/TradeButton";
+import TransactionFeeRateBox from "./components/TransactionFeeRateBox";
 
 function TradeController({
   disabled,
@@ -31,6 +33,7 @@ function TradeController({
   activeLeverage?: number;
 }) {
   // Account System
+  const levelInfo = useRecoilValue(levelInfoState);
   const [cashAccount, setCashAccount] = useRecoilState(cashAccountState);
   const [longLiquid, setLongLiquid] = useRecoilState(longLiquidState);
   const [shortLiquid, setShortLiquid] = useRecoilState(shortLiquidState);
@@ -156,7 +159,7 @@ function TradeController({
     const targetCash = (cashAccount * amountRate) / 100;
     const ableCoinAmount = Math.floor(
       targetCash /
-        (lastClosePrice * (1 + (TRANSACTION_FEE_RATE / 100) * leverage))
+        (lastClosePrice * (1 + (levelInfo.transactionFeeRate / 100) * leverage))
     );
     setCoinAmount(ableCoinAmount);
   }, [amountRate, leverage]);
@@ -165,7 +168,7 @@ function TradeController({
     setTotalPrice(
       lastClosePrice *
         coinAmount *
-        (1 + (TRANSACTION_FEE_RATE / 100) * leverage)
+        (1 + (levelInfo.transactionFeeRate / 100) * leverage)
     );
   }, [lastClosePrice, coinAmount]);
 
@@ -211,14 +214,22 @@ function TradeController({
           justifyContent: "center",
         }}
       >
-        <View style={{ flex: 2.5 }}>
-          <TotalPriceBox totalPrice={totalPrice} coinAmount={coinAmount} />
+        <View
+          style={{ height: "100%", flex: 2, justifyContent: "space-evenly" }}
+        >
+          <TotalPriceBox totalPrice={totalPrice} />
+          <CoinAmountBox coinAmount={coinAmount} />
         </View>
-        <View style={{ flex: 1 }}>
+        <View
+          style={{ height: "100%", flex: 1, justifyContent: "space-evenly" }}
+        >
           <LiquidPriceBox
             isLongSelected={isLongSelected}
             longLiquid={longLiquid}
             shortLiquid={shortLiquid}
+          />
+          <TransactionFeeRateBox
+            transactionFee={levelInfo.transactionFeeRate}
           />
         </View>
       </View>

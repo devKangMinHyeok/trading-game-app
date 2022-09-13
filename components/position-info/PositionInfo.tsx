@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import {
   cashAccountState,
   isCandleMovingState,
+  levelInfoState,
   longAccountDetailState,
   longAccountState,
   shortAccountDetailState,
@@ -18,6 +19,7 @@ import PositionInfoViewer from "./PositionInfoViewer";
 
 function PositionInfo() {
   const isCandleMoving = useRecoilValue(isCandleMovingState);
+  const levelInfo = useRecoilValue(levelInfoState);
 
   const [cashAccount, setCashAccount] = useRecoilState(cashAccountState);
   const longAccountDetail = useRecoilValue(longAccountDetailState);
@@ -37,14 +39,27 @@ function PositionInfo() {
 
   const longCloseHandler = () => {
     if (!isCandleMoving) {
-      setCashAccount((prev) => prev + longAccountDetail.totalAsset);
+      setCashAccount(
+        (prev) =>
+          prev +
+          longAccountDetail.totalAsset *
+            (1 -
+              (levelInfo.transactionFeeRate * longAccountDetail.leverage) / 100)
+      );
       resetLongAccount();
     }
   };
 
   const shortCloseHandler = () => {
     if (!isCandleMoving) {
-      setCashAccount((prev) => prev + shortAccountDetail.totalAsset);
+      setCashAccount(
+        (prev) =>
+          prev +
+          shortAccountDetail.totalAsset *
+            (1 -
+              (levelInfo.transactionFeeRate * shortAccountDetail.leverage) /
+                100)
+      );
       resetShortAccount();
     }
   };

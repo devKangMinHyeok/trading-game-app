@@ -10,12 +10,14 @@ import {
   VictoryCursorContainer,
   VictoryLine,
   VictoryLabel,
+  Line,
 } from "victory-native";
 import {
   candleDataState,
   isCandleMovingState,
   lastClosePriceState,
   lastOpenPriceState,
+  levelInfoState,
   longAccountDetailState,
   longAccountState,
   longLiquidState,
@@ -49,8 +51,8 @@ import { SCREEN_WIDTH } from "../../styles/rootStyles";
 import theme from "../../styles/theme";
 
 function CandleChart() {
-  // console.log("렌더링");
   const turnNumber = useRecoilValue(turnNumberState);
+  const levelInfo = useRecoilValue(levelInfoState);
   const [candleData, setCandleData] = useRecoilState(candleDataState);
   const [isCandleMoving, setIsCandleMoving] =
     useRecoilState(isCandleMovingState);
@@ -134,7 +136,9 @@ function CandleChart() {
       const newCandleSet = candleGenerator(
         nextDate,
         lastPrice,
-        SPLIT_UNIT_OF_CANDLE
+        SPLIT_UNIT_OF_CANDLE,
+        levelInfo.randomGap,
+        levelInfo.stddev
       );
       setLastOpenPrice(newCandleSet[0].open);
       for (let i = 0; i < newCandleSet.length; i++) {
@@ -183,10 +187,23 @@ function CandleChart() {
         domainPadding={{ x: DOMAIN_PADDING }}
         containerComponent={
           <VictoryCursorContainer
-            cursorLabel={({ datum }) =>
-              "     price :   " + `${round(datum.y, 1)}`
+            cursorLabel={({ datum }) => "            " + `${round(datum.y, 1)}`}
+            cursorComponent={
+              <Line
+                style={{
+                  stroke: theme.colors.crossHairLineColor,
+                  strokeWidth: 1,
+                }}
+              />
             }
-            style={{ fill: "white" }}
+            cursorLabelComponent={
+              <VictoryLabel
+                style={{
+                  fill: theme.colors.baseTextColor,
+                  fontSize: theme.font.smallValueFontSize,
+                }}
+              />
+            }
           />
         }
         style={{
@@ -234,13 +251,23 @@ function CandleChart() {
 
         {/* 현재가 Line */}
         <VictoryLabel
-          text={Math.ceil(lastClosePrice)}
+          text={lastClosePrice.toFixed(1)}
           datum={{
-            x: calDate(new Date(chartXDomain[1]), 1),
+            x: calDate(new Date(chartXDomain[1]), 4),
             y: lastClosePrice + 5,
           }}
           textAnchor="end"
           style={sharedLabelStyle}
+          backgroundPadding={[{ left: 5, right: 3, top: 3, bottom: 3 }]}
+          backgroundStyle={[
+            {
+              fill:
+                lastClosePrice > lastOpenPrice
+                  ? theme.colors.longCandleColor
+                  : theme.colors.shortCandleColor,
+              opacity: 0.98,
+            },
+          ]}
         />
         <VictoryLine
           domain={{

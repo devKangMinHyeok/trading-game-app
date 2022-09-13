@@ -49,6 +49,21 @@ export const TopAccountRate = styled(BaseTextContainer)`
       : props.theme.colors.baseTextColor};
 `;
 
+// Level
+export const LevelLabelText = styled(BaseTextContainer)`
+  color: "black";
+  font-size: ${(props: IContainerProps) => props.theme.font.midiumTextFontSize};
+`;
+
+export const ProgressValueText = styled(BaseTextContainer)`
+  font-size: ${(props: IContainerProps) =>
+    props.theme.font.midiumValueFontSize};
+`;
+
+export const LevelUpText = styled(BaseTextContainer)`
+  font-size: ${(props: IContainerProps) => props.theme.font.midiumTextFontSize};
+`;
+
 // Middle Account
 export const MiddleAccountText = styled(BaseTextContainer)`
   color: ${(props: IContainerProps) => props.theme.colors.toneDownTextColor};
@@ -136,6 +151,7 @@ export const ControlSectionTitleText = styled(BaseTextContainer)`
   font-size: ${(props: IContainerProps) => props.theme.font.smallTextFontSize};
   color: ${(props: IContainerProps) => props.theme.colors.toneDownTextColor};
 `;
+
 export const ControlSectionValueText = styled(BaseTextContainer)`
   font-size: ${(props: IContainerProps) =>
     props.theme.font.midiumValueFontSize};

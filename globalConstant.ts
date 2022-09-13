@@ -1,4 +1,4 @@
-import { ICandleStick } from "./interfaces/interface";
+import { ICandleStick, ILevelInfo } from "./interfaces/interface";
 
 // Chart Style
 export const LABEL_GAP_OF_LINE = 2;
@@ -36,11 +36,70 @@ export const CANDLE_INITIAL_DATE = new Date(2022, 0, 1);
 
 // Account
 export const INITIAL_CASH = 1000000;
-export const TRANSACTION_FEE_RATE = 0.04;
 
 export const POSITIVE = "positive";
 export const NEGATIVE = "negative";
 export const ZERO = "zero";
+
+export const LEVEL_UP_EXP_CASH = 10000000;
+export const LEVEL_SETTING: ILevelInfo[] = [
+  {
+    levelNumber: 1,
+    levelName: "입문자",
+    randomGap: 0.04,
+    stddev: 1,
+    transactionFeeRate: 0.04,
+    color: "#ead600",
+  },
+  {
+    levelNumber: 2,
+    levelName: "코린이",
+    randomGap: 0.05,
+    stddev: 2,
+    transactionFeeRate: 0.06,
+    color: "#ff7e2e",
+  },
+  {
+    levelNumber: 3,
+    levelName: "초보자",
+    randomGap: 0.06,
+    stddev: 3,
+    transactionFeeRate: 0.08,
+    color: "#00dfb2",
+  },
+  {
+    levelNumber: 4,
+    levelName: "중급자",
+    randomGap: 0.07,
+    stddev: 4,
+    transactionFeeRate: 0.1,
+    color: "#043efa",
+  },
+  {
+    levelNumber: 5,
+    levelName: "전문가",
+    randomGap: 0.08,
+    stddev: 5,
+    transactionFeeRate: 0.12,
+    color: "#ad00dd",
+  },
+  {
+    levelNumber: 6,
+    levelName: "예언자",
+    randomGap: 0.09,
+    stddev: 6,
+    transactionFeeRate: 0.2,
+    color: "#ff0099",
+  },
+  {
+    levelNumber: 7,
+    levelName: "신",
+    randomGap: 0.1,
+    stddev: 7,
+    transactionFeeRate: 0.35,
+    color: "#ffffff",
+  },
+];
 
 // Leverage
 export const INIT_LEVERAGE = 1;
