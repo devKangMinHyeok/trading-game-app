@@ -39,6 +39,8 @@ export type loanType =
   | 5000000000
   | 10000000000;
 
+export type limitTurnType = 50 | 100 | 300 | 500 | 1000;
+
 export interface ILevelInfo {
   levelNumber: levelNumberType;
   levelName: levelNameType;
@@ -47,6 +49,7 @@ export interface ILevelInfo {
   transactionFeeRate: transactionFeeRateType;
   color: string;
   loan: loanType;
+  limitTurn: limitTurnType;
 }
 
 export interface IFutureAccount {

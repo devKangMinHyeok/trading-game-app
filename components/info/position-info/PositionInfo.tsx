@@ -73,7 +73,7 @@ function PositionInfo() {
 
   return (
     <View style={rootStyles.positionInfo}>
-      <View style={{ flex: 1 }} onLayout={onLayout}>
+      <View style={{ flex: 1, marginRight: 5 }} onLayout={onLayout}>
         <CustomVictoryStack
           parentSize={size}
           barCashRate={barCashRate}
@@ -81,7 +81,7 @@ function PositionInfo() {
           position={longAccountDetail.positionActive}
         />
       </View>
-      <View style={{ flex: 2.5 }}>
+      <View style={{ flex: 3.5 }}>
         {longAccountDetail.positionActive ? (
           <PositionInfoViewer
             accountDetail={longAccountDetail}

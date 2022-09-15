@@ -51,6 +51,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     transactionFeeRate: 0.04,
     color: "#ead600",
     loan: 2000000,
+    limitTurn: 50,
   },
   {
     levelNumber: 2,
@@ -60,6 +61,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     transactionFeeRate: 0.06,
     color: "#ff7e2e",
     loan: 5000000,
+    limitTurn: 100,
   },
   {
     levelNumber: 3,
@@ -69,6 +71,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     transactionFeeRate: 0.08,
     color: "#00dfb2",
     loan: 10000000,
+    limitTurn: 300,
   },
   {
     levelNumber: 4,
@@ -78,6 +81,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     transactionFeeRate: 0.1,
     color: "#043efa",
     loan: 100000000,
+    limitTurn: 500,
   },
   {
     levelNumber: 5,
@@ -87,6 +91,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     transactionFeeRate: 0.12,
     color: "#ad00dd",
     loan: 1000000000,
+    limitTurn: 1000,
   },
   {
     levelNumber: 6,
@@ -96,6 +101,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     transactionFeeRate: 0.2,
     color: "#ff0099",
     loan: 5000000000,
+    limitTurn: 1000,
   },
   {
     levelNumber: 7,
@@ -105,6 +111,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     transactionFeeRate: 0.35,
     color: "#ffffff",
     loan: 10000000000,
+    limitTurn: 1000,
   },
 ];
 
