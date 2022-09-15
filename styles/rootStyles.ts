@@ -41,11 +41,19 @@ const rootStyles = StyleSheet.create({
     backgroundColor: theme.colors.backgroundColor2,
   },
 
-  positionInfo: {
+  Info: {
     flex: 1.2,
+  },
+
+  positionInfo: {
+    width: SCREEN_WIDTH * 0.95,
     flexDirection: "row",
     justifyContent: "space-around",
     backgroundColor: theme.colors.backgroundColor2,
+  },
+
+  loanInfo: {
+    width: SCREEN_WIDTH * 0.95,
   },
 
   controlPanel: {

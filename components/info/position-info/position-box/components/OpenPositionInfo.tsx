@@ -1,11 +1,11 @@
 import { memo } from "react";
 import { Text, View } from "react-native";
-import convertKrNumberType from "../../../../functions/convertKrNumberType";
+import convertKrNumberType from "../../../../../functions/convertKrNumberType";
 import {
   PositionInfoTitleBoxText,
   PositionInfoValueBoxText,
   UnrealizedPnlBoxValue,
-} from "../../../../styles/TextStyledComponents";
+} from "../../../../../styles/TextStyledComponents";
 
 interface OpenPositionInfoProps {
   openPositionValue: number;

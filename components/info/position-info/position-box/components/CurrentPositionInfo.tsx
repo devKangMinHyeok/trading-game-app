@@ -1,11 +1,11 @@
 import { View } from "react-native";
-import convertKrNumberType from "../../../../functions/convertKrNumberType";
+import convertKrNumberType from "../../../../../functions/convertKrNumberType";
 import {
   LiquidValueText,
   OpenValueText,
   PositionInfoTitleBoxText,
   PositionInfoValueBoxText,
-} from "../../../../styles/TextStyledComponents";
+} from "../../../../../styles/TextStyledComponents";
 
 interface PositionSettingInfoProps {
   liquidPrice: number;

@@ -10,10 +10,10 @@ import {
   shortAccountDetailState,
   shortAccountState,
   totalAccountState,
-} from "../../atom";
-import useComponentSize from "../../hooks/useComponentSize";
-import rootStyles from "../../styles/rootStyles";
-import CustomVictoryStack from "../assets/CustomVictoryStack";
+} from "../../../atom";
+import useComponentSize from "../../../hooks/useComponentSize";
+import rootStyles from "../../../styles/rootStyles";
+import CustomVictoryStack from "../../assets/CustomVictoryStack";
 import EmptyPositionBox from "./EmptyPositionBox";
 import PositionInfoViewer from "./PositionInfoViewer";
 

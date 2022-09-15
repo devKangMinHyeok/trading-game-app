@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Text, View } from "react-native";
-import { EmptyPositionText } from "../../styles/TextStyledComponents";
+import { EmptyPositionText } from "../../../styles/TextStyledComponents";
 
 function EmptyPositionBox() {
   return (

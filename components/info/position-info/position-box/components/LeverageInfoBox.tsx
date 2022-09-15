@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Text, View } from "react-native";
-import { PositionLeverageBoxText } from "../../../../styles/TextStyledComponents";
+import { PositionLeverageBoxText } from "../../../../../styles/TextStyledComponents";
 
 interface LeverageInfoBoxProps {
   leverage: number;

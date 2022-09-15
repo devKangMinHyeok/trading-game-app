@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { IFutureAccountDetail } from "../../interfaces/interface";
+import { IFutureAccountDetail } from "../../../interfaces/interface";
 import EmptyPositionBox from "./EmptyPositionBox";
 import PositionBox from "./position-box/PositionBox";
 

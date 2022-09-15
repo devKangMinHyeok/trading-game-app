@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { IFutureAccountDetail } from "../../../interfaces/interface";
+import { IFutureAccountDetail } from "../../../../interfaces/interface";
 import CloseButton from "./components/CloseButton";
 import PositionSettingInfo from "./components/CurrentPositionInfo";
 import LeverageInfoBox from "./components/LeverageInfoBox";

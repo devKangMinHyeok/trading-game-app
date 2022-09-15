@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { Text, View } from "react-native";
-import { PositionTitleBoxText } from "../../../../styles/TextStyledComponents";
-import theme from "../../../../styles/theme";
+import { PositionTitleBoxText } from "../../../../../styles/TextStyledComponents";
+import theme from "../../../../../styles/theme";
 
 interface TitleBoxProps {
   isLong: boolean;

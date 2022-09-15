@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { Text, View } from "react-native";
-import convertKrNumberType from "../../../../functions/convertKrNumberType";
+import convertKrNumberType from "../../../../../functions/convertKrNumberType";
 import {
   UnrealizedPnlBoxText,
   UnrealizedPnlBoxValue,
-} from "../../../../styles/TextStyledComponents";
+} from "../../../../../styles/TextStyledComponents";
 
 interface ProfitInfoBoxProps {
   unrealizedPnl: number;
