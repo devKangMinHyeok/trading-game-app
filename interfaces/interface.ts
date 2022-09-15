@@ -17,17 +17,36 @@ export type levelNameType =
   | "예언자"
   | "신";
 
-export type levelRandomGap = 0.04 | 0.05 | 0.06 | 0.07 | 0.08 | 0.09 | 0.1;
+export type levelRandomGapType = 0.04 | 0.05 | 0.06 | 0.07 | 0.08 | 0.09 | 0.1;
 
-export type transactionFeeRate = 0.04 | 0.06 | 0.08 | 0.1 | 0.12 | 0.2 | 0.35;
+export type stddevType = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+
+export type transactionFeeRateType =
+  | 0.04
+  | 0.06
+  | 0.08
+  | 0.1
+  | 0.12
+  | 0.2
+  | 0.35;
+
+export type loanType =
+  | 2000000
+  | 5000000
+  | 10000000
+  | 100000000
+  | 1000000000
+  | 5000000000
+  | 10000000000;
 
 export interface ILevelInfo {
   levelNumber: levelNumberType;
   levelName: levelNameType;
-  randomGap: levelRandomGap;
-  stddev: number;
-  transactionFeeRate: transactionFeeRate;
+  randomGap: levelRandomGapType;
+  stddev: stddevType;
+  transactionFeeRate: transactionFeeRateType;
   color: string;
+  loan: loanType;
 }
 
 export interface IFutureAccount {

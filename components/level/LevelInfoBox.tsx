@@ -7,7 +7,6 @@ import {
   levelNumberState,
   totalAccountState,
 } from "../../atom";
-import { LEVEL_UP_EXP_CASH } from "../../globalConstant";
 
 import rootStyles from "../../styles/rootStyles";
 import LevelLabelBox from "./LevelLabelBox";
@@ -20,7 +19,7 @@ function LevelInfoBox() {
   const totalAccount = useRecoilValue(totalAccountState);
   const isCandleMoving = useRecoilValue(isCandleMovingState);
   const [progressRate, setProgressRate] = useState<number>(
-    totalAccount.totalAsset / LEVEL_UP_EXP_CASH
+    totalAccount.totalAsset / levelInfo.loan
   );
   const [isReadyToLevelUp, setIsReadyToLevelUp] = useState<boolean>(
     progressRate >= 1
@@ -28,7 +27,7 @@ function LevelInfoBox() {
 
   useEffect(() => {
     if (!isCandleMoving) {
-      setProgressRate(totalAccount.totalAsset / LEVEL_UP_EXP_CASH);
+      setProgressRate(totalAccount.totalAsset / levelInfo.loan);
     }
   }, [isCandleMoving, levelNumber]);
 

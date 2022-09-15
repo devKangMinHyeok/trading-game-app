@@ -41,7 +41,7 @@ export const POSITIVE = "positive";
 export const NEGATIVE = "negative";
 export const ZERO = "zero";
 
-export const LEVEL_UP_EXP_CASH = 10000000;
+export const INTEREST_RATE = 0.0001;
 export const LEVEL_SETTING: ILevelInfo[] = [
   {
     levelNumber: 1,
@@ -50,6 +50,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     stddev: 1,
     transactionFeeRate: 0.04,
     color: "#ead600",
+    loan: 2000000,
   },
   {
     levelNumber: 2,
@@ -58,6 +59,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     stddev: 2,
     transactionFeeRate: 0.06,
     color: "#ff7e2e",
+    loan: 5000000,
   },
   {
     levelNumber: 3,
@@ -66,6 +68,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     stddev: 3,
     transactionFeeRate: 0.08,
     color: "#00dfb2",
+    loan: 10000000,
   },
   {
     levelNumber: 4,
@@ -74,6 +77,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     stddev: 4,
     transactionFeeRate: 0.1,
     color: "#043efa",
+    loan: 100000000,
   },
   {
     levelNumber: 5,
@@ -82,6 +86,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     stddev: 5,
     transactionFeeRate: 0.12,
     color: "#ad00dd",
+    loan: 1000000000,
   },
   {
     levelNumber: 6,
@@ -90,6 +95,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     stddev: 6,
     transactionFeeRate: 0.2,
     color: "#ff0099",
+    loan: 5000000000,
   },
   {
     levelNumber: 7,
@@ -98,6 +104,7 @@ export const LEVEL_SETTING: ILevelInfo[] = [
     stddev: 7,
     transactionFeeRate: 0.35,
     color: "#ffffff",
+    loan: 10000000000,
   },
 ];
 
