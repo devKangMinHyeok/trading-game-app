@@ -6,6 +6,7 @@ import {
   levelInfoState,
   levelNumberState,
   totalAccountState,
+  turnNumberState,
 } from "../../atom";
 
 import rootStyles from "../../styles/rootStyles";
@@ -14,6 +15,7 @@ import LevelProgressBar from "./LevelProgressBar";
 import LevelUpButton from "./LevelUpButton";
 
 function LevelInfoBox() {
+  const turnNumber = useRecoilValue(turnNumberState);
   const levelNumber = useRecoilValue(levelNumberState);
   const levelInfo = useRecoilValue(levelInfoState);
   const totalAccount = useRecoilValue(totalAccountState);
@@ -29,7 +31,7 @@ function LevelInfoBox() {
     if (!isCandleMoving) {
       setProgressRate(totalAccount.totalAsset / levelInfo.loan);
     }
-  }, [isCandleMoving, levelNumber]);
+  }, [isCandleMoving, levelNumber, turnNumber]);
 
   useEffect(() => {
     setIsReadyToLevelUp(progressRate >= 1);

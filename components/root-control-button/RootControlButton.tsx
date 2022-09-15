@@ -25,6 +25,7 @@ function RootControlButton() {
   const resetLongAccount = useResetRecoilState(longAccountState);
   const resetShortAccount = useResetRecoilState(shortAccountState);
   const resetLevelNumber = useResetRecoilState(levelNumberState);
+  const resetTurnNumber = useResetRecoilState(turnNumberState);
   const [isCandleMoving, setIsCandleMoving] =
     useRecoilState(isCandleMovingState);
   const nextTurnHandler = () => {
@@ -36,6 +37,7 @@ function RootControlButton() {
     resetLongAccount();
     resetShortAccount();
     resetLevelNumber();
+    resetTurnNumber();
   };
 
   return (
