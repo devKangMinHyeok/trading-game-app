@@ -45,6 +45,9 @@ const rootStyles = StyleSheet.create({
     flex: 1.2,
   },
 
+  closePanel: {
+    width: SCREEN_WIDTH * 0.1,
+  },
   positionInfo: {
     width: SCREEN_WIDTH * 0.95,
     flexDirection: "row",

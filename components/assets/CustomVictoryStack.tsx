@@ -36,8 +36,8 @@ function CustomVictoryStack({
       <VictoryBar
         data={[{ x: "a", y: barFutureRate }]}
         labels={({ datum }) => `${Math.ceil(datum.y * 100)}%`}
-        style={{ labels: { fill: "white" } }}
-        labelComponent={<VictoryLabel dx={25} dy={8} />}
+        style={{ labels: { fill: "white", fontSize: 14 } }}
+        labelComponent={<VictoryLabel dx={24} dy={6} />}
         barWidth={15}
       />
       <VictoryBar data={[{ x: "a", y: barCashRate }]} barWidth={15} />

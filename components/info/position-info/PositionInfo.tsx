@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import {
   cashAccountState,
@@ -34,7 +34,6 @@ function PositionInfo() {
   const [barFutureRate, setBarFutureRate] = useState(
     totalAcount.futureValuation / totalAcount.totalAsset
   );
-
   const { size, onLayout } = useComponentSize();
 
   const longCloseHandler = () => {
@@ -73,7 +72,7 @@ function PositionInfo() {
 
   return (
     <View style={rootStyles.positionInfo}>
-      <View style={{ flex: 1, marginRight: 5 }} onLayout={onLayout}>
+      <View style={{ flex: 1, flexDirection: "row" }} onLayout={onLayout}>
         <CustomVictoryStack
           parentSize={size}
           barCashRate={barCashRate}
@@ -81,7 +80,7 @@ function PositionInfo() {
           position={longAccountDetail.positionActive}
         />
       </View>
-      <View style={{ flex: 3.5 }}>
+      <View style={{ flex: 3.2 }}>
         {longAccountDetail.positionActive ? (
           <PositionInfoViewer
             accountDetail={longAccountDetail}

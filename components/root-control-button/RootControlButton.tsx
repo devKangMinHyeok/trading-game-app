@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
 import { useRecoilState, useResetRecoilState } from "recoil";
 import {
   cashAccountState,
@@ -10,7 +10,6 @@ import {
 } from "../../atom";
 import {
   AccountResetButtonContainer,
-  BaseButton,
   NextTurnButtonContainer,
 } from "../../styles/buttonStyles";
 import rootStyles from "../../styles/rootStyles";

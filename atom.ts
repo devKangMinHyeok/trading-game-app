@@ -2,6 +2,7 @@ import { atom, selector } from "recoil";
 import {
   INITIAL_CANDLE_SET,
   INITIAL_CASH,
+  INTEREST_RATE,
   LAST_OF_INITIAL_CANDLE_CLOSE,
   LAST_OF_INITIAL_CANDLE_HIGH,
   LAST_OF_INITIAL_CANDLE_LOW,
@@ -88,6 +89,14 @@ export const levelInfoState = selector({
   get: ({ get }) => {
     const levelNumber = get(levelNumberState);
     return LEVEL_SETTING[levelNumber - 1];
+  },
+});
+
+export const interestPriceState = selector({
+  key: "interestPriceState",
+  get: ({ get }) => {
+    const levelInfo = get(levelInfoState);
+    return levelInfo.loan * INTEREST_RATE;
   },
 });
 

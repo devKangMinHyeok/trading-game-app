@@ -4,19 +4,17 @@ import convertKrNumberType from "../../../../functions/convertKrNumberType";
 
 interface InterestLimitBoxProps {
   remainTurn: number;
-  loan: number;
-  interestRate: number;
+  interestPrice: number;
 }
 
 function InterestLimitBox({
   remainTurn,
-  loan,
-  interestRate,
+  interestPrice,
 }: InterestLimitBoxProps) {
   return (
     <View style={{ flex: 2, flexDirection: "row" }}>
-      <Text>{remainTurn}일 뒤 </Text>
-      <Text>{convertKrNumberType(loan * interestRate)}원 지출</Text>
+      {remainTurn == 1 ? <Text>내일 </Text> : <Text>{remainTurn}일 뒤 </Text>}
+      <Text>{convertKrNumberType(interestPrice)}원 지출</Text>
     </View>
   );
 }
