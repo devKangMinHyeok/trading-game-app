@@ -93,13 +93,6 @@ export const shortLiquidState = atom({
 });
 
 // 게좌 시스템
-export const bangTriggerState = atom({
-  key: "bangTriggerState",
-  default: {
-    bang: false,
-    type: "none" as bangType,
-  },
-});
 
 export const cashAccountState = atom({
   key: "accountState",
@@ -144,10 +137,6 @@ export const loanInfoState = selector({
     const futureInterestRemain =
       totalFutureAccount.totalAsset - futureInterestFee;
 
-    const cashLoanRemain = cashAccount - loanPrice;
-    const futureLoanFee =
-      loanPrice * (1 + (transactionFeeRate * futureActive.leverage) / 100);
-    const futureLoanRemain = totalFutureAccount.totalAsset - futureLoanFee;
     return {
       interest: {
         payAble: cashInterestRemain >= 0 || futureInterestRemain >= 0,
@@ -156,14 +145,6 @@ export const loanInfoState = selector({
         interestTurnNumber,
         cashRemain: cashInterestRemain,
         futurePayFee: futureInterestFee,
-      },
-      loan: {
-        payAble: cashLoanRemain >= 0 || futureLoanRemain >= 0,
-        cashAble: cashLoanRemain >= 0,
-        futureAble: futureLoanRemain >= 0,
-        loanTurnNumber,
-        cashRemain: cashLoanRemain,
-        futurePayFee: futureLoanFee,
       },
     };
   },

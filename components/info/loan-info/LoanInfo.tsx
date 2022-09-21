@@ -1,26 +1,19 @@
 import { cloneDeep } from "lodash";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
-import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import {
-  bangTriggerState,
-  cashAccountState,
   interestPriceState,
   interestTurnNumberState,
   isCandleMovingState,
   levelInfoState,
   levelNumberState,
   loanTurnNumberState,
-  longAccountDetailState,
-  longAccountState,
-  shortAccountDetailState,
-  shortAccountState,
   totalAccountState,
-  totalFutureAccountState,
   turnNumberState,
 } from "../../../atom";
 
-import { INTEREST_DUE_PERIOD, INTEREST_RATE } from "../../../globalConstant";
+import { INTEREST_RATE } from "../../../globalConstant";
 import rootStyles from "../../../styles/rootStyles";
 import InterestLimitBox from "./components/InterestLimitBox";
 import InterestRateBox from "./components/InterestRateBox";
@@ -37,14 +30,6 @@ function LoanInfo() {
   const levelInfo = useRecoilValue(levelInfoState);
   const totalAccount = useRecoilValue(totalAccountState);
   const interestPrice = useRecoilValue(interestPriceState);
-  const longAccountDetail = useRecoilValue(longAccountDetailState);
-  const shortAccountDetail = useRecoilValue(shortAccountDetailState);
-  const totalFutureAccount = useRecoilValue(totalFutureAccountState);
-
-  const [bangTrigger, setBangTrigger] = useRecoilState(bangTriggerState);
-  const [cashAccount, setCashAccount] = useRecoilState(cashAccountState);
-  const [longAccount, setLongAccount] = useRecoilState(longAccountState);
-  const [shortAccount, setShortAccount] = useRecoilState(shortAccountState);
 
   const interestTurnNumber = useRecoilValue(interestTurnNumberState);
   const loanTurnNumber = useRecoilValue(loanTurnNumberState);

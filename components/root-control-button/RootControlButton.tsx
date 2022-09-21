@@ -2,7 +2,6 @@ import { cloneDeep } from "lodash";
 import { View } from "react-native";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import {
-  bangTriggerState,
   cashAccountState,
   futureActiveState,
   interestPriceState,
@@ -29,14 +28,13 @@ import {
 function RootControlButton() {
   const interestTurnNumber = useRecoilValue(interestTurnNumberState);
   const loanTurnNumber = useRecoilValue(loanTurnNumberState);
-  const levelInfo = useRecoilValue(levelInfoState);
   const interestPrice = useRecoilValue(interestPriceState);
   const futureActive = useRecoilValue(futureActiveState);
   const loanInfo = useRecoilValue(loanInfoState);
 
+  const [levelNumber, setLevelNumber] = useRecoilState(levelNumberState);
   const [longAccount, setLongAccount] = useRecoilState(longAccountState);
   const [shortAccount, setShortAccount] = useRecoilState(shortAccountState);
-  const [bangTrigger, setBangTrigger] = useRecoilState(bangTriggerState);
   const [turnNumber, setTurnNumber] = useRecoilState(turnNumberState);
   const [cashAccount, setCashAccount] = useRecoilState(cashAccountState);
 
@@ -62,7 +60,6 @@ function RootControlButton() {
             newAccount.openPositionValue - loanInfo.interest.futurePayFee;
           newAccount.currentPositionValue =
             newAccount.openPositionValue - loanInfo.interest.futurePayFee;
-          console.log(loanInfo.interest.futurePayFee);
           return newAccount;
         });
       } else if (futureActive.isShortActive) {
@@ -80,55 +77,28 @@ function RootControlButton() {
       }
     } else {
       console.error("PayInterest Able, but not Working?");
-      setBangTrigger({ bang: true, type: "interest" });
     }
   };
 
-  const payLoan = () => {
-    if (loanInfo.loan.cashAble) {
-      setCashAccount(loanInfo.loan.cashRemain);
-    } else if (loanInfo.loan.futureAble) {
-      if (futureActive.isLongActive) {
-        setLongAccount((prev) => {
-          const newAccount = cloneDeep(prev);
-          newAccount.openPositionAmount =
-            newAccount.openPositionAmount -
-            levelInfo.loan / newAccount.openPrice;
-          newAccount.openPositionValue =
-            newAccount.openPositionValue - loanInfo.loan.futurePayFee;
-          newAccount.currentPositionValue =
-            newAccount.openPositionValue - loanInfo.loan.futurePayFee;
-          return newAccount;
-        });
-      } else if (futureActive.isShortActive) {
-        setShortAccount((prev) => {
-          const newAccount = cloneDeep(prev);
-          newAccount.openPositionAmount =
-            newAccount.openPositionAmount -
-            levelInfo.loan / newAccount.openPrice;
-          newAccount.openPositionValue =
-            newAccount.openPositionValue - loanInfo.loan.futurePayFee;
-          newAccount.currentPositionValue =
-            newAccount.openPositionValue - loanInfo.loan.futurePayFee;
-          return newAccount;
-        });
-      }
-    } else {
-      console.error("PayInterest Able, but not Working?");
-      setBangTrigger({ bang: true, type: "loan" });
-    }
-  };
-
-  const setAccountZero = () => {
-    setCashAccount(0);
-  };
-
-  const resetButtonHandler = () => {
+  const resetAccount = () => {
     resetCashAccount();
     resetLongAccount();
     resetShortAccount();
-    resetLevelNumber();
+  };
+
+  const resetButtonHandler = () => {
     resetTurnNumber();
+    resetAccount();
+    resetLevelNumber();
+  };
+
+  const setLevelDown = () => {
+    resetTurnNumber();
+    resetAccount();
+    setLevelNumber((prev) => {
+      if (prev > 1) return prev - 1;
+      else return 1;
+    });
   };
 
   const nextTurnHandler = () => {
@@ -138,18 +108,12 @@ function RootControlButton() {
         setTurnNumber((prev) => prev + 1);
         setIsCandleMoving(true);
       } else {
-        alert("이자를 내지 못하여 파산하셨습니다.\n 처음부터 다시 시작하세요.");
-        resetButtonHandler();
+        alert("이자를 내지 못하여 파산하셨습니다.\n 레벨이 다운 됩니다.");
+        setLevelDown();
       }
     } else if (loanTurnNumber == 1) {
-      if (loanInfo.loan.payAble) {
-        payLoan();
-        setTurnNumber((prev) => prev + 1);
-        setIsCandleMoving(true);
-      } else {
-        alert("대출을 갚지 못하여 파산하셨습니다.\n 처음부터 다시 시작하세요.");
-        resetButtonHandler();
-      }
+      alert("대출을 갚지 못하여 파산하셨습니다.\n 레벨이 다운 됩니다.");
+      setLevelDown();
     } else {
       setTurnNumber((prev) => prev + 1);
       setIsCandleMoving(true);
