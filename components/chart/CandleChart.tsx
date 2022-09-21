@@ -13,6 +13,7 @@ import {
   Line,
 } from "victory-native";
 import {
+  bangTriggerState,
   candleDataState,
   isCandleMovingState,
   lastClosePriceState,
@@ -51,6 +52,7 @@ import { SCREEN_WIDTH } from "../../styles/rootStyles";
 import theme from "../../styles/theme";
 
 function CandleChart() {
+  const bangTrigger = useRecoilValue(bangTriggerState);
   const turnNumber = useRecoilValue(turnNumberState);
   const levelInfo = useRecoilValue(levelInfoState);
   const [candleData, setCandleData] = useRecoilState(candleDataState);
@@ -128,7 +130,7 @@ function CandleChart() {
   );
 
   useEffect(() => {
-    if (turnNumber > 1) {
+    if (turnNumber > 1 && !bangTrigger.bang) {
       const timers: NodeJS.Timeout[] = [];
       const lastDate = candleData.slice(-1)[0].x;
       const nextDate = calDate(new Date(lastDate), 1);

@@ -3,13 +3,20 @@ import { Text, View } from "react-native";
 
 interface RemainTurnBoxProps {
   limitTurn: number;
-  turnNumber: number;
 }
 
-function RemainTurnBox({ limitTurn, turnNumber }: RemainTurnBoxProps) {
+function RemainTurnBox({ limitTurn }: RemainTurnBoxProps) {
   return (
     <View>
-      <Text>상환까지 {limitTurn - turnNumber}일 남음</Text>
+      {limitTurn >= 1 ? (
+        limitTurn == 1 ? (
+          <Text>내일은 상환일</Text>
+        ) : (
+          <Text>상환까지 {limitTurn}일 남음</Text>
+        )
+      ) : (
+        <Text></Text>
+      )}
     </View>
   );
 }

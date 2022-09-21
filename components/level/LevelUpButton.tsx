@@ -6,6 +6,7 @@ import {
   levelNumberState,
   longAccountState,
   shortAccountState,
+  turnNumberState,
 } from "../../atom";
 import { LevelUpButtonContainer } from "../../styles/buttonStyles";
 import { LevelUpText } from "../../styles/TextStyledComponents";
@@ -16,6 +17,7 @@ interface LevelUpButtonProps {
 
 function LevelUpButton({ isReadyToLevelUp }: LevelUpButtonProps) {
   const [levelNumber, setLevelNumber] = useRecoilState(levelNumberState);
+  const resetTurnNumber = useResetRecoilState(turnNumberState);
   const resetCashAccount = useResetRecoilState(cashAccountState);
   const resetLongAccount = useResetRecoilState(longAccountState);
   const resetShortAccount = useResetRecoilState(shortAccountState);
@@ -26,6 +28,7 @@ function LevelUpButton({ isReadyToLevelUp }: LevelUpButtonProps) {
       resetCashAccount();
       resetLongAccount();
       resetShortAccount();
+      resetTurnNumber();
     }
   };
 

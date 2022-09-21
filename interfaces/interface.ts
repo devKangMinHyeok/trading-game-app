@@ -6,6 +6,8 @@ export interface ICandleStick {
   low: number;
 }
 
+export type bangType = "none" | "interest" | "loan";
+
 export type levelNumberType = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 export type levelNameType =

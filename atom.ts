@@ -2,6 +2,7 @@ import { atom, selector } from "recoil";
 import {
   INITIAL_CANDLE_SET,
   INITIAL_CASH,
+  INTEREST_DUE_PERIOD,
   INTEREST_RATE,
   LAST_OF_INITIAL_CANDLE_CLOSE,
   LAST_OF_INITIAL_CANDLE_HIGH,
@@ -13,6 +14,7 @@ import {
   ZERO,
 } from "./globalConstant";
 import {
+  bangType,
   IFutureAccount,
   IFutureAccountDetail,
   ILevelInfo,
@@ -31,6 +33,23 @@ export const candleDataState = atom({
 export const turnNumberState = atom({
   key: "turnNumberState",
   default: 1,
+});
+
+export const interestTurnNumberState = selector({
+  key: "interestTurnNumberState",
+  get: ({ get }) => {
+    const turnNumber = get(turnNumberState);
+    return INTEREST_DUE_PERIOD - (turnNumber % INTEREST_DUE_PERIOD);
+  },
+});
+
+export const loanTurnNumberState = selector({
+  key: "loanTurnNumberState",
+  get: ({ get }) => {
+    const turnNumber = get(turnNumberState);
+    const { limitTurn } = get(levelInfoState);
+    return limitTurn - turnNumber;
+  },
 });
 
 export const isLongControllerActiveState = atom({
@@ -74,6 +93,14 @@ export const shortLiquidState = atom({
 });
 
 // 게좌 시스템
+export const bangTriggerState = atom({
+  key: "bangTriggerState",
+  default: {
+    bang: false,
+    type: "none" as bangType,
+  },
+});
+
 export const cashAccountState = atom({
   key: "accountState",
   default: 1000000,
@@ -97,6 +124,48 @@ export const interestPriceState = selector({
   get: ({ get }) => {
     const levelInfo = get(levelInfoState);
     return levelInfo.loan * INTEREST_RATE;
+  },
+});
+
+export const loanInfoState = selector({
+  key: "loanInfoState",
+  get: ({ get }) => {
+    const interestTurnNumber = get(interestTurnNumberState);
+    const loanTurnNumber = get(loanTurnNumberState);
+    const cashAccount = get(cashAccountState);
+    const interestPrice = get(interestPriceState);
+    const { loan: loanPrice, transactionFeeRate } = get(levelInfoState);
+    const futureActive = get(futureActiveState);
+    const totalFutureAccount = get(totalFutureAccountState);
+
+    const cashInterestRemain = cashAccount - interestPrice;
+    const futureInterestFee =
+      interestPrice * (1 + (transactionFeeRate * futureActive.leverage) / 100);
+    const futureInterestRemain =
+      totalFutureAccount.totalAsset - futureInterestFee;
+
+    const cashLoanRemain = cashAccount - loanPrice;
+    const futureLoanFee =
+      loanPrice * (1 + (transactionFeeRate * futureActive.leverage) / 100);
+    const futureLoanRemain = totalFutureAccount.totalAsset - futureLoanFee;
+    return {
+      interest: {
+        payAble: cashInterestRemain >= 0 || futureInterestRemain >= 0,
+        cashAble: cashInterestRemain >= 0,
+        futureAble: futureInterestRemain >= 0,
+        interestTurnNumber,
+        cashRemain: cashInterestRemain,
+        futurePayFee: futureInterestFee,
+      },
+      loan: {
+        payAble: cashLoanRemain >= 0 || futureLoanRemain >= 0,
+        cashAble: cashLoanRemain >= 0,
+        futureAble: futureLoanRemain >= 0,
+        loanTurnNumber,
+        cashRemain: cashLoanRemain,
+        futurePayFee: futureLoanFee,
+      },
+    };
   },
 });
 
@@ -124,6 +193,28 @@ export const shortAccountState = atom({
     openPositionValue: 0,
     currentPositionValue: 0,
   } as IFutureAccount,
+});
+
+export const futureActiveState = selector({
+  key: "futureActiveState",
+  get: ({ get }) => {
+    const { positionActive: isLongActive, leverage: longLeverage } =
+      get(longAccountState);
+    const { positionActive: isShortActive, leverage: shortLeverage } =
+      get(shortAccountState);
+    const futureActive = isLongActive || isShortActive;
+    const leverage = futureActive
+      ? isLongActive
+        ? longLeverage
+        : shortLeverage
+      : 1;
+    return {
+      futureActive,
+      isLongActive,
+      isShortActive,
+      leverage,
+    };
+  },
 });
 
 export const longAccountDetailState = selector({
