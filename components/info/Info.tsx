@@ -8,7 +8,6 @@ function Info() {
     <View style={rootStyles.Info}>
       <ScrollView
         horizontal={true}
-        pagingEnabled={true}
         alwaysBounceHorizontal={false}
         bounces={false}
       >

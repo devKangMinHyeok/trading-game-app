@@ -49,14 +49,14 @@ const rootStyles = StyleSheet.create({
     width: SCREEN_WIDTH * 0.1,
   },
   positionInfo: {
-    width: SCREEN_WIDTH * 0.95,
+    width: SCREEN_WIDTH * 0.9,
     flexDirection: "row",
     justifyContent: "space-around",
 
     backgroundColor: theme.colors.backgroundColor2,
   },
 
-  loanInfo: { padding: 5, width: SCREEN_WIDTH * 0.95 },
+  loanInfo: { padding: 5, width: SCREEN_WIDTH * 0.2 },
 
   controlPanel: {
     flex: 1.4,
