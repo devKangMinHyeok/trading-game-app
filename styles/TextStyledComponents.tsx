@@ -166,6 +166,10 @@ export const LoanInfoValueText = styled(BaseTextContainer)`
   font-size: ${(props: IContainerProps) => props.theme.font.smallTextFontSize};
 `;
 
+export const LoanInfoUnitText = styled(BaseTextContainer)`
+  font-size: ${(props: IContainerProps) => props.theme.font.tinyFontsize};
+`;
+
 export const InterestTurnLimitText = styled(BaseTextContainer)`
   background-color: ${(props: IContainerProps) =>
     props.theme.colors.interestTurnLimitBackgroundColor};

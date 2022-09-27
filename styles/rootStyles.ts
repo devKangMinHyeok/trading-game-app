@@ -50,7 +50,7 @@ const rootStyles = StyleSheet.create({
   },
 
   positionInfo: {
-    width: SCREEN_WIDTH * 0.87,
+    width: SCREEN_WIDTH * 0.84,
     flexDirection: "row",
     justifyContent: "space-around",
     backgroundColor: theme.colors.backgroundColor2,
@@ -58,7 +58,7 @@ const rootStyles = StyleSheet.create({
 
   loanInfo: {
     padding: 5,
-    width: SCREEN_WIDTH * 0.2,
+    width: SCREEN_WIDTH * 0.16,
     backgroundColor: theme.colors.backgroundColor3,
   },
 

@@ -93,6 +93,8 @@ interface IFont {
   bigTextFontSize: string;
   smallTextFontSize: string;
 
+  tinyFontsize: string;
+
   boldFontWeight: number;
   regularFontWeight: number;
   lightFontWeight: number;
@@ -108,6 +110,7 @@ const font: IFont = {
   bigTextFontSize: "16px",
   midiumTextFontSize: "14px",
   smallTextFontSize: "12px",
+  tinyFontsize: "11px",
 
   boldFontWeight: 600,
   regularFontWeight: 500,

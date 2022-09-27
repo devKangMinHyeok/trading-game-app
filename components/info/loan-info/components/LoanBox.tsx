@@ -3,6 +3,7 @@ import { View } from "react-native";
 import convertKrNumberType from "../../../../functions/convertKrNumberType";
 import {
   LoanInfoTitleText,
+  LoanInfoUnitText,
   LoanInfoValueText,
   RemainTurnBoxText,
 } from "../../../../styles/TextStyledComponents";
@@ -28,11 +29,16 @@ function LoanBox({ limitTurn, loanPrice }: LoanBoxProps) {
       </View>
       <View style={{ marginTop: 1 }}>
         <LoanInfoTitleText>대출금</LoanInfoTitleText>
-        <LoanInfoValueText>
-          {loanPrice / 10000 >= 10000
-            ? `${convertKrNumberType(Math.ceil(loanPrice / 100000000))}억원`
-            : `${convertKrNumberType(Math.ceil(loanPrice / 10000))}만원`}
-        </LoanInfoValueText>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <LoanInfoValueText>
+            {loanPrice / 10000 >= 10000
+              ? `${convertKrNumberType(Math.ceil(loanPrice / 100000000))}`
+              : `${convertKrNumberType(Math.ceil(loanPrice / 10000))}`}
+          </LoanInfoValueText>
+          <LoanInfoUnitText>
+            {loanPrice / 10000 >= 10000 ? `억원` : `만원`}
+          </LoanInfoUnitText>
+        </View>
       </View>
     </View>
   );
