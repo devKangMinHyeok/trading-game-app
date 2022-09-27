@@ -64,13 +64,14 @@ const rootStyles = StyleSheet.create({
 
   controlPanel: {
     flex: 1.4,
-    backgroundColor: "pink",
+    backgroundColor: theme.colors.backgroundColor1,
     flexDirection: "row",
   },
 
   trade: {
     flex: 7.5,
-    backgroundColor: "grey",
+    backgroundColor: theme.colors.backgroundColor1,
+    padding: 5,
   },
 
   shop: {

@@ -134,9 +134,10 @@ function RootControlButton() {
       </View>
       <View
         style={{
-          flex: 3.5,
+          flex: 4,
           justifyContent: "flex-start",
           alignItems: "center",
+          paddingRight: 25,
         }}
       >
         <NextTurnButtonContainer

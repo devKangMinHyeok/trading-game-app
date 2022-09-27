@@ -244,7 +244,7 @@ function TradeController({
         />
       </View>
       <View style={{ flex: 1.5, flexDirection: "row" }}>
-        <View style={{ flex: 3, alignItems: "center" }}>
+        <View style={{ flex: 3, alignItems: "flex-end", paddingRight: 20 }}>
           {isLongSelected ? (
             <TradeButton
               isCandleMoving={isCandleMoving}
