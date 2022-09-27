@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/trading-game-app/static/js/app.e8933799.chunk.js",
-    "app.js.map": "/trading-game-app/static/js/app.e8933799.chunk.js.map",
+    "app.js": "/trading-game-app/static/js/app.80eba3e7.chunk.js",
+    "app.js.map": "/trading-game-app/static/js/app.80eba3e7.chunk.js.map",
     "runtime~app.js": "/trading-game-app/static/js/runtime~app.25d1b835.js",
     "runtime~app.js.map": "/trading-game-app/static/js/runtime~app.25d1b835.js.map",
-    "static/js/2.40f8efd0.chunk.js": "/trading-game-app/static/js/2.40f8efd0.chunk.js",
-    "static/js/2.40f8efd0.chunk.js.map": "/trading-game-app/static/js/2.40f8efd0.chunk.js.map",
+    "static/js/2.da29b1c1.chunk.js": "/trading-game-app/static/js/2.da29b1c1.chunk.js",
+    "static/js/2.da29b1c1.chunk.js.map": "/trading-game-app/static/js/2.da29b1c1.chunk.js.map",
     "fonts/MaterialCommunityIcons.ttf": "/trading-game-app/./fonts/MaterialCommunityIcons.ttf",
     "favicon-16.png": "/trading-game-app/favicon-16.png",
     "favicon-32.png": "/trading-game-app/favicon-32.png",
@@ -13,11 +13,11 @@
     "index.html": "/trading-game-app/index.html",
     "manifest.json": "/trading-game-app/manifest.json",
     "serve.json": "/trading-game-app/serve.json",
-    "static/js/2.40f8efd0.chunk.js.LICENSE.txt": "/trading-game-app/static/js/2.40f8efd0.chunk.js.LICENSE.txt"
+    "static/js/2.da29b1c1.chunk.js.LICENSE.txt": "/trading-game-app/static/js/2.da29b1c1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime~app.25d1b835.js",
-    "static/js/2.40f8efd0.chunk.js",
-    "static/js/app.e8933799.chunk.js"
+    "static/js/2.da29b1c1.chunk.js",
+    "static/js/app.80eba3e7.chunk.js"
   ]
 }
