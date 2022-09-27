@@ -1,5 +1,6 @@
 import { memo } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import { DayNumberText } from "../../../../styles/TextStyledComponents";
 
 interface TurnNumberBoxProps {
   turnNumber: number;
@@ -7,8 +8,13 @@ interface TurnNumberBoxProps {
 
 function TurnNumberBox({ turnNumber }: TurnNumberBoxProps) {
   return (
-    <View>
-      <Text>{turnNumber}일째</Text>
+    <View
+      style={{
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+      }}
+    >
+      <DayNumberText>{turnNumber}일째</DayNumberText>
     </View>
   );
 }

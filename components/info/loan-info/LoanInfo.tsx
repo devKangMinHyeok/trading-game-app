@@ -10,10 +10,9 @@ import {
 
 import { INTEREST_RATE } from "../../../globalConstant";
 import rootStyles from "../../../styles/rootStyles";
-import InterestLimitBox from "./components/InterestLimitBox";
-import InterestRateBox from "./components/InterestRateBox";
-import RemainTurnBox from "./components/RemainTurnBox";
-import TargetAssetBox from "./components/TargetAssetBox";
+import InterestBox from "./components/InterestBox";
+import LoanBox from "./components/LoanBox";
+
 import TurnNumberBox from "./components/TurnNumberBox";
 
 function LoanInfo() {
@@ -28,23 +27,12 @@ function LoanInfo() {
       <View style={{ flex: 1 }}>
         <TurnNumberBox turnNumber={turnNumber} />
       </View>
-      <View style={{ flex: 1 }}>
-        <InterestRateBox interestRate={INTEREST_RATE} />
-        <InterestLimitBox
+      <View style={{ flex: 5 }}>
+        <InterestBox
           remainTurn={interestTurnNumber}
           interestPrice={interestPrice}
         />
-      </View>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: "row",
-        }}
-      >
-        <TargetAssetBox loan={levelInfo.loan} />
-      </View>
-      <View style={{ flex: 1, alignItems: "flex-end" }}>
-        <RemainTurnBox limitTurn={loanTurnNumber} />
+        <LoanBox limitTurn={loanTurnNumber} loanPrice={levelInfo.loan} />
       </View>
     </View>
   );

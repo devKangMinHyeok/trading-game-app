@@ -23,6 +23,7 @@ export const BaseTextContainer = styled.Text`
 `;
 
 // Top Account
+
 export const TopAccountText = styled(BaseTextContainer)`
   font-size: ${(props: IContainerProps) => props.theme.font.midiumTextFontSize};
 `;
@@ -58,6 +59,10 @@ export const LevelLabelText = styled(BaseTextContainer)`
 export const ProgressValueText = styled(BaseTextContainer)`
   font-size: ${(props: IContainerProps) =>
     props.theme.font.midiumValueFontSize};
+`;
+
+export const TargetValueText = styled(BaseTextContainer)`
+  font-size: ${(props: IContainerProps) => props.theme.font.smallValueFontSize};
 `;
 
 export const LevelUpText = styled(BaseTextContainer)`
@@ -144,6 +149,35 @@ export const PositionCloseButtonText = styled(BaseTextContainer)`
 
 export const EmptyPositionText = styled(BaseTextContainer)`
   font-weight: ${(props: IContainerProps) => props.theme.font.boldFontWeight};
+`;
+
+// Loan Info
+export const DayNumberText = styled(BaseTextContainer)`
+  background-color: ${(props: IContainerProps) =>
+    props.theme.colors.dayNumberBackgroundColor};
+  padding: 1px;
+  font-size: ${(props: IContainerProps) => props.theme.font.midiumTextFontSize};
+  color: "black";
+`;
+
+export const LoanInfoTitleText = styled(PositionInfoTitleBoxText)``;
+
+export const LoanInfoValueText = styled(BaseTextContainer)`
+  font-size: ${(props: IContainerProps) => props.theme.font.smallTextFontSize};
+`;
+
+export const InterestTurnLimitText = styled(BaseTextContainer)`
+  background-color: ${(props: IContainerProps) =>
+    props.theme.colors.interestTurnLimitBackgroundColor};
+  font-size: ${(props: IContainerProps) => props.theme.font.smallTextFontSize};
+  padding: 1px;
+`;
+
+export const RemainTurnBoxText = styled(BaseTextContainer)`
+  background-color: ${(props: IContainerProps) =>
+    props.theme.colors.remainTurnBoxBackgrounderColor};
+  padding: 1px;
+  font-size: ${(props: IContainerProps) => props.theme.font.smallTextFontSize};
 `;
 
 // Controll Panel

@@ -48,7 +48,10 @@ function LevelInfoBox() {
         }}
       >
         <LevelLabelBox label={levelInfo.levelName} color={levelInfo.color} />
-        <LevelProgressBar progressRate={progressRate} />
+        <LevelProgressBar
+          progressRate={progressRate}
+          targetValue={levelInfo.loan}
+        />
       </View>
       <View style={{ flex: 1, paddingRight: 10 }}>
         <LevelUpButton isReadyToLevelUp={isReadyToLevelUp} />

@@ -96,7 +96,7 @@ export const shortLiquidState = atom({
 
 export const cashAccountState = atom({
   key: "accountState",
-  default: 1000000,
+  default: INITIAL_CASH,
 });
 
 export const levelNumberState = atom({

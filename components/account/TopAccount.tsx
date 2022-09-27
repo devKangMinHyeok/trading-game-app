@@ -1,12 +1,7 @@
-import { memo, useEffect, useState } from "react";
+import { memo } from "react";
 import { View } from "react-native";
-import { useRecoilState, useRecoilValue } from "recoil";
-import {
-  isCandleMovingState,
-  levelInfoState,
-  levelNumberState,
-  totalAccountState,
-} from "../../atom";
+import { useRecoilValue } from "recoil";
+import { totalAccountState } from "../../atom";
 import convertKrNumberType from "../../functions/convertKrNumberType";
 import { INITIAL_CASH } from "../../globalConstant";
 import rootStyles from "../../styles/rootStyles";

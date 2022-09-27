@@ -41,7 +41,7 @@ export const POSITIVE = "positive";
 export const NEGATIVE = "negative";
 export const ZERO = "zero";
 
-export const INTEREST_DUE_PERIOD = 3;
+export const INTEREST_DUE_PERIOD = 10;
 export const INTEREST_RATE = 0.0001;
 export const LEVEL_SETTING: ILevelInfo[] = [
   {

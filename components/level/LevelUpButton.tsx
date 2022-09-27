@@ -38,7 +38,7 @@ function LevelUpButton({ isReadyToLevelUp }: LevelUpButtonProps) {
         disabled={!isReadyToLevelUp}
         onPress={levelUpHandler}
       >
-        <LevelUpText>레벨업</LevelUpText>
+        <LevelUpText>상환</LevelUpText>
       </LevelUpButtonContainer>
     </View>
   );

@@ -26,6 +26,11 @@ interface IColors {
 
   openPriceLineColor: string;
 
+  dayNumberBackgroundColor: string;
+  interestRateValueBackgroundColor: string;
+  interestTurnLimitBackgroundColor: string;
+  remainTurnBoxBackgrounderColor: string;
+
   LevelUpButtonBackgroundColor: string;
 
   CloseButtonBackgroundColor: string;
@@ -38,7 +43,7 @@ interface IColors {
 const colors: IColors = {
   backgroundColor1: "#161A1E",
   backgroundColor2: "#1e2227ff",
-  backgroundColor3: "#303030ff",
+  backgroundColor3: "#14161aff",
 
   baseTextColor: "#FFFFFF",
   toneDownTextColor: "#bebebe",
@@ -62,6 +67,11 @@ const colors: IColors = {
   crossHairLineColor: "#FFFFFF",
 
   openPriceLineColor: "#ffc56e",
+
+  dayNumberBackgroundColor: "#18dcff",
+  interestRateValueBackgroundColor: "#00d460",
+  interestTurnLimitBackgroundColor: "#830094",
+  remainTurnBoxBackgrounderColor: "#fa3636",
 
   LevelUpButtonBackgroundColor: "#00b052",
 
