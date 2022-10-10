@@ -1,10 +1,42 @@
 import { useState } from "react";
 import { Button, Text, View } from "react-native";
 import Modal from "react-native-modal";
-function ResetModal({ visible }: { visible: boolean }) {
-  const [isModalVisible, setModalVisible] = useState(true);
+import { useResetRecoilState } from "recoil";
+import {
+  cashAccountState,
+  levelNumberState,
+  longAccountState,
+  shortAccountState,
+  turnNumberState,
+} from "../../atom";
+
+interface ResetModalProps {
+  isModalVisible: boolean;
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function ResetModal({ isModalVisible, setModalVisible }: ResetModalProps) {
+  const resetCashAccount = useResetRecoilState(cashAccountState);
+  const resetLongAccount = useResetRecoilState(longAccountState);
+  const resetShortAccount = useResetRecoilState(shortAccountState);
+  const resetLevelNumber = useResetRecoilState(levelNumberState);
+  const resetTurnNumber = useResetRecoilState(turnNumberState);
+
+  const resetAccount = () => {
+    resetCashAccount();
+    resetLongAccount();
+    resetShortAccount();
+  };
+
+  const resetGame = () => {
+    resetTurnNumber();
+    resetAccount();
+    resetLevelNumber();
+  };
+
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
+    resetGame();
   };
   return (
     <View>

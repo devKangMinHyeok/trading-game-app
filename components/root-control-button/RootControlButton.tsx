@@ -1,4 +1,5 @@
 import { cloneDeep } from "lodash";
+import { useState } from "react";
 import { View } from "react-native";
 import { useRecoilState, useRecoilValue, useResetRecoilState } from "recoil";
 import {
@@ -47,6 +48,8 @@ function RootControlButton() {
   const [isCandleMoving, setIsCandleMoving] =
     useRecoilState(isCandleMovingState);
 
+  const [isModalVisible, setModalVisible] = useState(false);
+
   const payInterest = () => {
     if (loanInfo.interest.cashAble) {
       setCashAccount(loanInfo.interest.cashRemain);
@@ -88,9 +91,7 @@ function RootControlButton() {
   };
 
   const resetButtonHandler = () => {
-    resetTurnNumber();
-    resetAccount();
-    resetLevelNumber();
+    setModalVisible((prev) => !prev);
   };
 
   const setLevelDown = () => {
@@ -132,7 +133,10 @@ function RootControlButton() {
         >
           <ResetButtonText>리셋</ResetButtonText>
         </AccountResetButtonContainer>
-        <ResetModal visible={true} />
+        <ResetModal
+          isModalVisible={isModalVisible}
+          setModalVisible={setModalVisible}
+        />
       </View>
       <View
         style={{
