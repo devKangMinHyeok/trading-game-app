@@ -11,8 +11,8 @@ function Info() {
         alwaysBounceHorizontal={false}
         bounces={false}
       >
-        <PositionInfo />
         <LoanInfo />
+        <PositionInfo />
       </ScrollView>
     </View>
   );

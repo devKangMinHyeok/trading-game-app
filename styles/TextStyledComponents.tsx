@@ -156,7 +156,7 @@ export const DayNumberText = styled(BaseTextContainer)`
   background-color: ${(props: IContainerProps) =>
     props.theme.colors.dayNumberBackgroundColor};
   padding: 1px;
-  font-size: ${(props: IContainerProps) => props.theme.font.midiumTextFontSize};
+  font-size: ${(props: IContainerProps) => props.theme.font.smallTextFontSize};
   color: "black";
 `;
 

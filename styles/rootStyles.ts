@@ -59,7 +59,7 @@ const rootStyles = StyleSheet.create({
   loanInfo: {
     padding: 5,
     width: SCREEN_WIDTH * 0.16,
-    backgroundColor: theme.colors.backgroundColor3,
+    backgroundColor: theme.colors.backgroundColor2,
   },
 
   controlPanel: {
