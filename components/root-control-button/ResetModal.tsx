@@ -34,19 +34,29 @@ function ResetModal({ isModalVisible, setModalVisible }: ResetModalProps) {
     resetLevelNumber();
   };
 
-  const toggleModal = () => {
+  const resetConfirmHandler = () => {
     setModalVisible(!isModalVisible);
     resetGame();
   };
+
+  const resetCandelHandler = () => {
+    setModalVisible(!isModalVisible);
+  };
+
   return (
     <View>
       <Modal isVisible={isModalVisible}>
-        <View style={{ backgroundColor: "white", padding: 10 }}>
+        <View
+          style={{ backgroundColor: "white", padding: 10, borderRadius: 10 }}
+        >
           <View style={{ alignItems: "center" }}>
             <Text>계좌를 초기화 하시겠습니까?</Text>
             <Text>(레벨도 초기화 됩니다.)</Text>
           </View>
-          <Button title="Reset" onPress={toggleModal} />
+          <View style={{ flexDirection: "row", justifyContent: "center" }}>
+            <Button title="초기화" onPress={resetConfirmHandler} />
+            <Button title="취소" onPress={resetCandelHandler} />
+          </View>
         </View>
       </Modal>
     </View>
