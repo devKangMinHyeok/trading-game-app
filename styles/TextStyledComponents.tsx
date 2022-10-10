@@ -216,6 +216,13 @@ export const ResetButtonText = styled(BaseTextContainer)`
   font-size: ${(props: IContainerProps) => props.theme.font.bigTextFontSize};
   font-weight: ${(props: IContainerProps) => props.theme.font.boldFontWeight};
 `;
+
+export const ResetModalText = styled(BaseTextContainer)`
+  font-size: ${(props: IContainerProps) => props.theme.font.midiumTextFontSize};
+  font-weight: ${(props: IContainerProps) =>
+    props.theme.font.regularFontWeight};
+`;
+
 export const NextTurnButtonText = styled(BaseTextContainer)`
   font-size: ${(props: IContainerProps) => props.theme.font.bigTextFontSize};
   font-weight: ${(props: IContainerProps) => props.theme.font.boldFontWeight};

@@ -9,6 +9,12 @@ import {
   shortAccountState,
   turnNumberState,
 } from "../../atom";
+import {
+  ResetCancelButtonContainer,
+  ResetConfirmButtonContainer,
+} from "../../styles/buttonStyles";
+import { ResetModalText } from "../../styles/TextStyledComponents";
+import theme from "../../styles/theme";
 
 interface ResetModalProps {
   isModalVisible: boolean;
@@ -50,15 +56,27 @@ function ResetModal({ isModalVisible, setModalVisible }: ResetModalProps) {
         onBackdropPress={() => setModalVisible(false)}
       >
         <View
-          style={{ backgroundColor: "white", padding: 10, borderRadius: 10 }}
+          style={{
+            backgroundColor: theme.colors.backgroundColor3,
+            padding: 10,
+            borderRadius: 10,
+          }}
         >
-          <View style={{ alignItems: "center" }}>
-            <Text>계좌를 초기화 하시겠습니까?</Text>
-            <Text>(레벨도 초기화 됩니다.)</Text>
+          <View style={{ alignItems: "center", padding: 10 }}>
+            <ResetModalText>계좌를 초기화 하시겠습니까?</ResetModalText>
+            <ResetModalText>(레벨도 초기화 됩니다.)</ResetModalText>
           </View>
-          <View style={{ flexDirection: "row", justifyContent: "center" }}>
-            <Button title="초기화" onPress={resetConfirmHandler} />
-            <Button title="취소" onPress={resetCandelHandler} />
+          <View style={{ flexDirection: "row" }}>
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <ResetCancelButtonContainer onPress={resetCandelHandler}>
+                <Text>취소</Text>
+              </ResetCancelButtonContainer>
+            </View>
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <ResetConfirmButtonContainer onPress={resetConfirmHandler}>
+                <ResetModalText>초기화</ResetModalText>
+              </ResetConfirmButtonContainer>
+            </View>
           </View>
         </View>
       </Modal>

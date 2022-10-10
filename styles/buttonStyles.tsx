@@ -52,6 +52,19 @@ export const AccountResetButtonContainer = styled(BaseButton)`
   height: 50%;
 `;
 
+export const ResetConfirmButtonContainer = styled(BaseButton)`
+  background-color: ${(props: IContainerProps) =>
+    props.theme.colors.resetButtonBackgroundColor};
+  width: 95%;
+  padding: 10px;
+`;
+export const ResetCancelButtonContainer = styled(BaseButton)`
+  background-color: ${(props: IContainerProps) =>
+    props.theme.colors.toneDownTextColor};
+  width: 95%;
+  padding: 10px;
+`;
+
 export const NextTurnButtonContainer = styled(BaseButton)`
   background-color: ${(props: IContainerProps) =>
     props.theme.colors.nextTurnButtonBackgroundColor};
