@@ -24,6 +24,7 @@ import {
   NextTurnButtonText,
   ResetButtonText,
 } from "../../styles/TextStyledComponents";
+import ResetModal from "./ResetModal";
 
 function RootControlButton() {
   const interestTurnNumber = useRecoilValue(interestTurnNumberState);
@@ -131,6 +132,7 @@ function RootControlButton() {
         >
           <ResetButtonText>리셋</ResetButtonText>
         </AccountResetButtonContainer>
+        <ResetModal visible={true} />
       </View>
       <View
         style={{
