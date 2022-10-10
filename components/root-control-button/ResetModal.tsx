@@ -45,7 +45,10 @@ function ResetModal({ isModalVisible, setModalVisible }: ResetModalProps) {
 
   return (
     <View>
-      <Modal isVisible={isModalVisible}>
+      <Modal
+        isVisible={isModalVisible}
+        onBackdropPress={() => setModalVisible(false)}
+      >
         <View
           style={{ backgroundColor: "white", padding: 10, borderRadius: 10 }}
         >
